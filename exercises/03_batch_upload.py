@@ -4,8 +4,16 @@ The testing machine has written one result file per specimen into a folder.
 Instead of uploading the files one by one and copying values into the
 metadata by hand, a loop does this for every file.
 
-Part A is a complete example: a loop that evaluates every file. Part B is
-the exercise: extend the loop so that it uploads everything to Kadi4Mat.
+Part A is a complete example: sample S01 is added to a collection and linked
+to the machine record, and a loop evaluates every file. Part B is the
+exercise: extend the loop so that it uploads everything to Kadi4Mat.
+
+add_collection_link and link_record expect numeric IDs. If you only know the
+identifier, get the record or collection with manager.record(identifier=...)
+or manager.collection(identifier=...) and use its .id. On the command line,
+identifiers can be used directly:
+    kadi-apy records add-collection-link -R xy-sample-s01 -C xy-tensile-campaign-2026
+    kadi-apy records add-record-link -R xy-sample-s01 -L xy-tensile-machine -n "tested with"
 
 Run from the repository root:
 
@@ -17,7 +25,8 @@ Reference (https://kadi-apy.readthedocs.io/en/stable/usage/lib.html):
     KadiManager.collection      get or create a collection, parameters: see "Collection"
     Record.add_collection_link  add a record to a collection
     Record.link_record          link two records, e.g. sample and machine
-Related: Record.remove_collection_link, Record.get_record_links
+Related: Record.remove_collection_link, Record.get_record_links,
+Record.delete_record_link
 """
 
 from pathlib import Path
@@ -39,9 +48,31 @@ UNITS = {
 }
 
 
+manager = KadiManager()
+
+
 # ---------------------------------------------------------------------------
-# Part A: example, evaluate all files in the folder
+# Part A: example
 # ---------------------------------------------------------------------------
+
+# Collection for the whole campaign (created if it does not exist yet).
+collection = manager.collection(
+    identifier=f"{PREFIX}-tensile-campaign-2026",
+    title="Tensile test campaign 2026",
+    create=True,
+)
+
+# The records from part 2, looked up by their identifiers
+# (create=True only creates them if they do not exist yet).
+sample = manager.record(identifier=f"{PREFIX}-sample-s01",
+                        title="Steel sample S01", create=True)
+machine = manager.record(identifier=f"{PREFIX}-tensile-machine",
+                         title="Tensile testing machine", create=True)
+
+# Add the sample to the collection and link it to the machine.
+# Running link_record again tries to create the same link again.
+print("Added to collection:", sample.add_collection_link(collection.id).ok)
+print("Linked to machine:", sample.link_record(machine.id, name="tested with").ok)
 
 # The indented block runs once for every CSV file in the folder.
 for csv_file in sorted(DATA_FOLDER.glob("*.csv")):
@@ -53,15 +84,6 @@ for csv_file in sorted(DATA_FOLDER.glob("*.csv")):
 # ---------------------------------------------------------------------------
 # Part B: exercise, upload all samples
 # ---------------------------------------------------------------------------
-
-manager = KadiManager()
-
-# One collection for the whole test campaign.
-collection = manager.collection(
-    identifier=f"{PREFIX}-tensile-campaign-2026",
-    title="Tensile test campaign 2026",
-    create=True,
-)
 
 for csv_file in sorted(DATA_FOLDER.glob("*.csv")):
     sample_id = csv_file.stem.split("_")[0]
@@ -86,13 +108,12 @@ for csv_file in sorted(DATA_FOLDER.glob("*.csv")):
 
     # TODO 3: add the tag CAMPAIGN_TAG
 
-    # TODO 4: add the record to the collection (use collection.id)
+    # TODO 4: add the record to the collection (collection from part A)
+
+    # TODO 5: link the record to the machine (machine from part A, name
+    #         "tested with"). S01 is already linked in part A, so skip it:
+    #         if sample_id != "S01":
 
     print(sample_id, "uploaded")
 
 print(f"Done. Open the collection '{collection.meta['title']}' in Kadi4Mat.")
-
-# Optional: link every sample to the machine record from part 2, e.g.
-#   machine = manager.record(identifier=f"{PREFIX}-tensile-machine")
-#   record.link_record(machine.id, name="tested with")
-# Each call adds a new link, so do this only once per sample.

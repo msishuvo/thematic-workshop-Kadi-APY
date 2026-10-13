@@ -19,19 +19,26 @@ UNITS = {
     "elongation_at_break": "%",
 }
 
-# Part A: example, evaluate all files in the folder
-for csv_file in sorted(DATA_FOLDER.glob("*.csv")):
-    sample_id = csv_file.stem.split("_")[0]
-    print(sample_id, evaluate(csv_file))
-
-# Part B: exercise, upload all samples
 manager = KadiManager()
 
+# Part A: example
 collection = manager.collection(
     identifier=f"{PREFIX}-tensile-campaign-2026",
     title="Tensile test campaign 2026",
     create=True,
 )
+sample = manager.record(identifier=f"{PREFIX}-sample-s01",
+                        title="Steel sample S01", create=True)
+machine = manager.record(identifier=f"{PREFIX}-tensile-machine",
+                         title="Tensile testing machine", create=True)
+print("Added to collection:", sample.add_collection_link(collection.id).ok)
+print("Linked to machine:", sample.link_record(machine.id, name="tested with").ok)
+
+for csv_file in sorted(DATA_FOLDER.glob("*.csv")):
+    sample_id = csv_file.stem.split("_")[0]
+    print(sample_id, evaluate(csv_file))
+
+# Part B: exercise, upload all samples
 
 for csv_file in sorted(DATA_FOLDER.glob("*.csv")):
     sample_id = csv_file.stem.split("_")[0]
@@ -54,11 +61,9 @@ for csv_file in sorted(DATA_FOLDER.glob("*.csv")):
     record.upload_file(str(csv_file), force=True)
     record.add_tag(CAMPAIGN_TAG)
     record.add_collection_link(collection.id)
+    if sample_id != "S01":
+        record.link_record(machine.id, name="tested with")
 
     print(sample_id, "uploaded")
 
 print(f"Done. Open the collection '{collection.meta['title']}' in Kadi4Mat.")
-
-# Optional: link every sample to the machine record from part 2.
-# machine = manager.record(identifier=f"{PREFIX}-tensile-machine")
-# record.link_record(machine.id, name="tested with")
