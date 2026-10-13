@@ -48,7 +48,7 @@
     background: var(--code-bg); border-radius: 1.5mm; padding: 2.5mm 3mm; margin: 1mm 0 2.5mm; white-space: pre-wrap;
   }
   .cmt { color: #6a737d; }
-  .info-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 3mm; margin-bottom: 6mm; }
+  .info-row { display: grid; grid-template-columns: 1fr 1fr; gap: 3mm; margin-bottom: 6mm; }
   .info { border: 1px solid var(--line); border-radius: 2mm; padding: 2.5mm 3mm; }
   .info .label { font-size: 7.5pt; color: var(--muted); text-transform: uppercase; letter-spacing: .05em; }
   .info .value { font-weight: 600; margin-top: .5mm; word-break: break-all; }
@@ -94,6 +94,11 @@
   .way .name { font-weight: 700; }
   .way .sub { color: var(--muted); font-size: 8pt; }
   .kbd { font-family: "DejaVu Sans Mono", monospace; font-size: 7.8pt; border: 1px solid #b9c1c9; border-bottom-width: 2px; border-radius: 1mm; padding: 0 1.2mm; background: #fff; }
+  .anatomy { display: grid; grid-template-columns: auto auto auto 1fr; gap: 1.5mm; margin: 2mm 0 2mm; }
+  .anatomy .part { border-top: 3px solid var(--accent); background: var(--code-bg); border-radius: 0 0 1.5mm 1.5mm; padding: 1.8mm 2.2mm; }
+  .anatomy .part code { background: none; padding: 0; font-weight: 700; display: block; white-space: nowrap; }
+  .anatomy .part span { display: block; font-size: 7.4pt; color: var(--muted); margin-top: .8mm; }
+  .anatomy .p2 { border-color: #2563eb; } .anatomy .p3 { border-color: #9333ea; } .anatomy .p4 { border-color: #b45309; }
 </style>
 </head>
 <body>
@@ -107,9 +112,8 @@
     it takes about 20 minutes.</p>
 
   <div class="info-row">
-    <div class="info"><div class="label">Date &amp; time</div><div class="value"><span class="fill">[FILL IN]</span></div></div>
+    <div class="info"><div class="label">Date &amp; time</div><div class="value">Friday, 13 November 2026 · 14:00–16:00 (CET)</div></div>
     <div class="info"><div class="label">Meeting link</div><div class="value"><span class="fill">[FILL IN]</span></div></div>
-    <div class="info"><div class="label">Help before the day</div><div class="value"><span class="fill">[FILL IN e-mail]</span></div></div>
   </div>
 
   <h2>Before the workshop: checklist</h2>
@@ -156,8 +160,8 @@
     </div></li>
   </ul>
 
-  <div class="callout warn"><b>Something didn't work?</b> No problem. Send a screenshot of the error to the
-    help address above before the workshop, or join 10 minutes early. Don't skip the checklist:
+  <div class="callout warn"><b>Something didn't work?</b> No problem. Reply to the invitation e-mail with a
+    screenshot of the error before the workshop, or join 10 minutes early. Don't skip the checklist:
     setup problems are much easier to fix before the session than during it.</div>
 
   <div class="footer"><span>Kadi-APY workshop · Participant guide</span><span>1 / 4</span></div>
@@ -216,7 +220,7 @@
   <div class="footer"><span>Kadi-APY workshop · Participant guide</span><span>2 / 4</span></div>
 </section>
 
-<!-- ============ PAGE 3: COLAB + PYTHON SURVIVAL KIT ============ -->
+<!-- ============ PAGE 3: COLAB + CLI USAGE ============ -->
 <section class="page">
   <div class="kicker">Tools</div>
   <h2>Google Colab in one minute</h2>
@@ -227,36 +231,51 @@
     <tr><td class="k">Do an exercise</td><td>Change only lines marked <code>TODO</code>, then run the cell.</td></tr>
     <tr><td class="k">Get unstuck</td><td>Click <b>Show solution</b> below the exercise and copy the code.</td></tr>
     <tr><td class="k">Read a <code>!</code> line</td><td>Lines starting with <code>!</code> are terminal commands, not Python.</td></tr>
-    <tr><td class="k">Fix "everything is broken"</td><td><b>Runtime &rarr; Restart session</b>, then run all cells again from the top (section 0 first).</td></tr>
-    <tr><td class="k">Understand an error</td><td>Read the <b>last line</b> of the red message first. Colab may also offer an <b>Explain error</b> button.</td></tr>
+    <tr><td class="k">Fix "everything is broken"</td><td><b>Runtime &rarr; Restart session</b>, then run again from the top.</td></tr>
+    <tr><td class="k">Understand an error</td><td>Read the <b>last line</b> of the red message (or click <b>Explain error</b>).</td></tr>
   </table>
 
-  <h2 style="margin-top:4mm">Python survival kit: the only 6 things you need today</h2>
-  <p style="color:var(--muted)"><b style="color:var(--ink)">Indentation matters:</b> the spaces at the start of a line tell Python what belongs inside a loop. Keep them exactly as in the template.</p>
+  <h2 style="margin-top:3mm">Using the command line (CLI)</h2>
+  <p>With the CLI you control Kadi4Mat by typing short commands instead of clicking. Every command has the same structure:</p>
+  <div class="anatomy">
+    <div class="part p1"><code>kadi-apy</code><span>the program</span></div>
+    <div class="part p2"><code>records</code><span>what: records, collections, ...</span></div>
+    <div class="part p3"><code>add-metadatum</code><span>the action</span></div>
+    <div class="part p4"><code>-R jd-sample-s01 -m length -v 80 -t float -u mm</code><span>options: <b>-letter value</b>, the details of the action</span></div>
+  </div>
+
   <div class="two">
     <div>
-      <h3>1 · Variable: a name for a value</h3>
-<pre>PREFIX = "jd"
-temperature = 23.0</pre>
-      <h3>2 · Text with values inside (f-string)</h3>
-<pre>f"{PREFIX}-sample-s01"   <span class="cmt"># -> "jd-sample-s01"</span></pre>
-      <h3>3 · List: several things in order</h3>
-<pre>samples = ["S01", "S02", "S03"]</pre>
+      <h3>Where to type it</h3>
+      <p><b>In Colab:</b> in a code cell, with <code>!</code> in front:</p>
+<pre>!kadi-apy records --help</pre>
+      <p><b>On your own computer:</b> in a terminal (Windows: <i>Anaconda Prompt</i> or <i>Command Prompt</i>; macOS: <i>Terminal</i>), without <code>!</code>. One-time setup:</p>
+<pre>pip install kadi-apy
+kadi-apy config create    <span class="cmt"># new config</span>
+kadi-apy config set-host  <span class="cmt"># Kadi4Mat URL</span>
+kadi-apy config set-pat   <span class="cmt"># your token</span></pre>
+      <h3>Three rules</h3>
+      <p style="margin:0">Text with spaces goes in quotes: <code>-t "Steel sample S01"</code>.<br>
+        Upper and lower case matter: <code>-R</code> is not <code>-r</code>.<br>
+        Forgot an option? Add <code>--help</code> to any command.</p>
     </div>
     <div>
-      <h3>4 · Dictionary: named fields</h3>
-<pre>{"key": "yield_strength", "type": "float",
- "value": 364.1, "unit": "MPa"}</pre>
-      <h3>5 · For loop: repeat for every item</h3>
-<pre>for sample in samples:
-    print(sample)  <span class="cmt"># indented: inside</span></pre>
-      <h3>6 · Calling a function / method</h3>
-<pre>record.upload_file("S01_tensile.csv")
-<span class="cmt"># object . action ( details )</span></pre>
+      <h3>Options used today</h3>
+      <table style="margin-top:0">
+        <tr><th>Option</th><th>Meaning</th></tr>
+        <tr><td class="mono">-i</td><td>identifier of a <b>new</b> record (<code>create</code>)</td></tr>
+        <tr><td class="mono">-R</td><td>identifier of an <b>existing</b> record</td></tr>
+        <tr><td class="mono">-t</td><td>title (<code>create</code>), tag (<code>add-tag</code>) or type (<code>add-metadatum</code>)</td></tr>
+        <tr><td class="mono">-n</td><td>file or folder to upload</td></tr>
+        <tr><td class="mono">-m&nbsp;-v</td><td>metadata name and value</td></tr>
+        <tr><td class="mono">-u</td><td>unit, e.g. <code>mm</code>, <code>MPa</code></td></tr>
+        <tr><td class="mono">-f</td><td>force: overwrite what already exists</td></tr>
+        <tr><td class="mono">--help</td><td>show all options of a command</td></tr>
+      </table>
     </div>
   </div>
 
-  <div class="two" style="margin-top:6mm">
+  <div class="two" style="margin-top:4mm">
     <div class="callout" style="margin:0"><b>During the online session</b><br>
       Post a quick message in the chat when you finish an exercise.<br>
       Stuck for more than 2 minutes? Write in the chat; a helper will take you to a breakout room.<br>
@@ -264,7 +283,7 @@ temperature = 23.0</pre>
     <div class="callout" style="margin:0"><b>After the workshop</b><br>
       Docs: kadi-apy.readthedocs.io<br>
       Material: github.com/msishuvo/thematic-workshop-kadiAPY<br>
-      Using real lab data? Check your institute's data policy before uploading it to Colab, or install kadi-apy locally: <code>pip install kadi-apy</code>.</div>
+      Real lab data? Check your data policy before using Colab, or run kadi-apy on your own computer.</div>
   </div>
 
   <div class="footer"><span>Kadi-APY workshop · Participant guide</span><span>3 / 4</span></div>

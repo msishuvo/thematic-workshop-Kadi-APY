@@ -7,6 +7,7 @@ data management tasks in [Kadi4Mat](https://kadi.iam.kit.edu/).
 
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/msishuvo/thematic-workshop-kadiAPY/blob/main/notebooks/kadi_apy_workshop.ipynb)
 
+- **When:** Friday, 13 November 2026, 14:00–16:00 (CET)
 - **Format:** online, 90 min hands-on + 30 min discussion (2 h total)
 - **Environment:** Google Colab (nothing to install), Kadi4Mat at
   <https://kadi4mat.iam.kit.edu>
@@ -45,7 +46,7 @@ notebooks/
   kadi_apy_workshop.ipynb main workshop material: all exercises, runs in Colab
 docs/
   participant-guide/      4-page PDF for participants (checklist, concepts,
-                          Python basics, cheat sheet) + its HTML source
+                          Colab + command line usage, cheat sheet) + HTML source
   run-of-show.md          detailed timing, talking points, facilitator notes
   organizer-checklist.md  what to prepare and when (T-4 weeks to T+1 week)
   participant-setup.md    setup instructions (Colab, or local install)

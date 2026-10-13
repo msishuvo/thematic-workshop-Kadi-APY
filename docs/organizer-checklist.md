@@ -33,7 +33,7 @@
 - [ ] Create a short link to the Colab notebook, e.g. for
       `https://colab.research.google.com/github/msishuvo/thematic-workshop-kadiAPY/blob/main/notebooks/kadi_apy_workshop.ipynb`.
 - [ ] Fill in the `[FILL IN]` fields in `docs/participant-guide/participant-guide.html`
-      (date, meeting link, help e-mail, notebook short link) and regenerate the PDF.
+      (meeting link, notebook short link) and regenerate the PDF.
 - [ ] Prepare 5-8 slides max: motivation, three concepts, agenda, links.
       Everything else happens in Colab.
 - [ ] Prepare a "demo copy" of the notebook with solutions filled in, logged in
