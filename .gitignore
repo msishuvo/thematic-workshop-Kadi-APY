@@ -1,0 +1,5 @@
+downloads/
+tensile_campaign.png
+__pycache__/
+.ipynb_checkpoints/
+.kadiconfig

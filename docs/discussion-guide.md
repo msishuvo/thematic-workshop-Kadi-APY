@@ -1,0 +1,54 @@
+# Discussion Guide (30 min)
+
+The goal is to turn "nice demo" into "I know what I'll automate first".
+A loose Q&A tends to be dominated by 2-3 people; this structure keeps
+everyone involved.
+
+## 1. Think-pair (8 min)
+
+Ask everyone to write down, alone (2 min):
+
+> One repetitive data task from your lab week that annoys you.
+> Which instrument / file type? How often? How many files?
+
+Then discuss in pairs (6 min): *Which parts of it could kadi-apy do?*
+(creating records, uploading, extracting values into metadata, linking
+samples to measurements, finding data later)
+
+## 2. Collect and cluster (12 min)
+
+Go around the room; each pair names one task. Write them on a board /
+shared document, grouped into rough clusters, for example:
+
+| Cluster                       | Typical kadi-apy pattern                        |
+|-------------------------------|-------------------------------------------------|
+| Instrument output folder      | watch folder → upload + parse header → metadata |
+| Sample tracking               | one record per sample, links to measurements    |
+| Simulation runs               | create record per run, parameters as extras      |
+| Reporting / publication       | search by tag/metadata → download → plot/export |
+| Consistency across group      | Kadi4Mat templates + script that fills them     |
+
+For 2-3 of the most common tasks, sketch live on the board which
+kadi-apy calls they would need (it's usually the same 5-6 calls from today).
+
+## 3. Open questions and concerns (7 min)
+
+Likely topics; have short answers ready:
+
+- **"Is my token safe?"** Store it via `kadi-apy config create`, never in
+  scripts or git; give tokens an expiry date and minimal scopes.
+- **"What if the script runs twice?"** `create=True` with a fixed
+  identifier returns the existing record instead of duplicating it;
+  `upload_file(..., force=True)` replaces files.
+- **"Our instrument PC is offline / old Windows."** CLI on a lab PC with
+  a scheduled task, or copy to a network share and upload from there.
+- **"Can it import my existing data?"** ELN/RO-Crate import, JSON Schema and
+  SHACL template import exist (`kadi-apy misc import-eln`, etc.).
+- **"Where do I get help?"** Docs, the kadi-apy issue tracker, and your
+  local contact / office hours.
+
+## 4. Close (3 min)
+
+- Each participant states (or writes on a card) **one thing they'll try
+  this week**.
+- Announce follow-up: office hours, chat channel, repo link, feedback form.
