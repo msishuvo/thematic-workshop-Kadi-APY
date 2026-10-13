@@ -1,13 +1,13 @@
 """Exercise 4: find your records, download the data and plot it (10 min).
 
-Your data is in Kadi4Mat. Now get it back out: search by tag, print a
-summary table of the metadata, download the raw files and plot all curves.
+Search the records by tag, print a table of the metadata, download the
+CSV files and plot all curves in one figure.
 
 Fill in the TODOs, then run from the repository root:
 
     python exercises/04_find_and_plot.py
 
-Stuck? Compare with exercises/solutions/04_find_and_plot.py
+Solution: exercises/solutions/04_find_and_plot.py
 """
 
 from pathlib import Path
@@ -17,7 +17,7 @@ from kadi_apy import KadiManager
 
 from tensile import read_curve  # helper in exercises/tensile.py
 
-# TODO 1: put YOUR prefix here.
+# TODO 1: set your prefix.
 PREFIX = "xy"
 CAMPAIGN_TAG = f"{PREFIX}-tensile-campaign"
 DOWNLOAD_FOLDER = Path("downloads")
@@ -62,5 +62,5 @@ plt.savefig("tensile_campaign.png", dpi=150)
 print("\nPlot saved to tensile_campaign.png")
 plt.show()
 
-# Bonus: upload the plot back to Kadi4Mat, e.g. into the collection's records
+# Optional: upload the plot back to Kadi4Mat, e.g. into the collection's records
 # or a new "campaign summary" record, so the figure lives next to the data.

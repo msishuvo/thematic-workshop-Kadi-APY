@@ -1,78 +1,71 @@
 # Thematic Workshop: Kadi-APY for Everyday Lab Work
 
-A hands-on workshop for materials scientists on using
-[Kadi-APY](https://gitlab.com/iam-cms/kadi-apy)
-([docs](https://kadi-apy.readthedocs.io/en/stable/)) to automate routine
-data management tasks in [Kadi4Mat](https://kadi.iam.kit.edu/).
+Hands-on workshop on using [Kadi-APY](https://gitlab.com/iam-cms/kadi-apy)
+([documentation](https://kadi-apy.readthedocs.io/en/stable/)) to automate
+routine data management tasks in [Kadi4Mat](https://kadi.iam.kit.edu/).
 
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/msishuvo/thematic-workshop-kadiAPY/blob/main/notebooks/kadi_apy_workshop.ipynb)
 
-- **When:** Friday, 13 November 2026, 14:00–16:00 (CET)
-- **Format:** online, 90 min hands-on + 30 min discussion (2 h total)
-- **Environment:** Google Colab (nothing to install), Kadi4Mat at
-  <https://kadi4mat.iam.kit.edu>
-- **Audience:** materials scientists, zero to moderate Python experience
-- **Goal:** participants leave with a working script they can adapt to their
-  own lab data the next day
+- **Date:** Friday, 13 November 2026, 14:00-16:00 (CET)
+- **Format:** online, 90 min hands-on and 30 min discussion
+- **Environment:** Google Colab, Kadi4Mat at <https://kadi4mat.iam.kit.edu>
 
-## What participants will be able to do
+## Content
 
-1. Connect to Kadi4Mat from the terminal and from Python
-2. Create records, attach measurement files and add structured metadata
-   **without clicking through the web UI**
-3. Batch-upload a folder of measurement files, extracting key values
-   (e.g. yield strength) into searchable metadata automatically
-4. Find their data again by tag or metadata, download it and plot it
+1. Connecting to Kadi4Mat from the command line and from Python
+2. Creating records, uploading measurement files and adding metadata
+3. Uploading a folder of measurement files and extracting values
+   (e.g. yield strength) into metadata
+4. Searching records by tag, downloading the data and plotting it
 
-## Agenda at a glance
+## Agenda
 
-| Time        | Block                                     | Mode            |
-|-------------|-------------------------------------------|-----------------|
-| 0:00 – 0:10 | Welcome, the "why", live demo of end result | Talk + demo     |
-| 0:10 – 0:20 | Setup check: token + connection           | Hands-on        |
-| 0:20 – 0:35 | Exercise 1: the CLI, no Python needed     | Hands-on        |
-| 0:35 – 0:55 | Exercise 2: first Python script           | Code-along      |
-| 0:55 – 1:00 | Break / catch-up buffer                   |                 |
-| 1:00 – 1:20 | Exercise 3: batch-upload a test campaign  | Hands-on        |
-| 1:20 – 1:30 | Exercise 4: find, download, plot          | Code-along      |
-| 1:30 – 2:00 | Discussion: "your lab, your workflow"     | Moderated       |
+| Time      | Topic                                  |
+|-----------|----------------------------------------|
+| 0:00-0:10 | Introduction and demo                  |
+| 0:10-0:20 | Setup check: access token, connection  |
+| 0:20-0:35 | Exercise 1: command line interface     |
+| 0:35-0:55 | Exercise 2: first Python script        |
+| 0:55-1:00 | Break                                  |
+| 1:00-1:20 | Exercise 3: batch upload               |
+| 1:20-1:30 | Exercise 4: search, download, plot     |
+| 1:30-2:00 | Discussion                             |
 
 ## Repository layout
 
 ```
 notebooks/
-  kadi_apy_workshop.ipynb main workshop material: all exercises, runs in Colab
+  kadi_apy_workshop.ipynb  workshop notebook with all exercises (Colab)
 docs/
-  participant-guide.pdf   4-page PDF for participants (checklist, concepts,
-                          Colab + command line usage, cheat sheet)
-  participant-guide.html  editable source of the PDF
-  participant-setup.md    setup instructions (Colab, or local install)
-exercises/                same exercises as plain scripts, for running locally
-  01_cli_basics.md        CLI commands, no Python
-  02_first_script.py      create a record, add metadata, upload a file
-  03_batch_upload.py      upload a whole test campaign + extract metadata
-  04_find_and_plot.py     search, download and plot
-  solutions/              completed versions of the exercises
+  participant-guide.pdf    participant guide (setup checklist, basics, cheat sheet)
+  participant-guide.html   source of the PDF
+  participant-setup.md     setup instructions (Colab or local installation)
+exercises/                 the same exercises as Python scripts, for local use
+  01_cli_basics.md
+  02_first_script.py
+  03_batch_upload.py
+  04_find_and_plot.py
+  tensile.py               reading and evaluating the tensile test files
+  solutions/
 data/
-  tensile_tests/          synthetic tensile test data used in the exercises
+  tensile_tests/           example tensile test data (synthetic)
 ```
 
-## Quick start (participants)
+## Setup for participants
 
-1. Create a personal access token in Kadi4Mat (Settings → Access tokens).
-2. Open the notebook with the **Open in Colab** button above and
-   *File → Save a copy in Drive*.
+1. Create a personal access token in Kadi4Mat (Settings > Access tokens).
+2. Open the notebook with the "Open in Colab" button above and save a copy
+   (File > Save a copy in Drive).
 3. Store the token as a Colab secret named `KADI_PAT` (key icon in the sidebar).
 4. Run section 0 of the notebook.
 
-Full instructions: [docs/participant-setup.md](docs/participant-setup.md) and the
-[participant guide PDF](docs/participant-guide.pdf).
+Details: [docs/participant-setup.md](docs/participant-setup.md) and the
+[participant guide](docs/participant-guide.pdf).
 
-## Updating the participant guide PDF
+## Updating the participant guide
 
-Edit `docs/participant-guide.html` (fill in the yellow
-`[FILL IN]` fields), open it in Chrome and *Print → Save as PDF* (margins: none),
-or run:
+Edit `docs/participant-guide.html` and print it to PDF in Chrome
+(Print > Save as PDF, margins: none), or run:
 
 ```bash
 chromium --headless --no-pdf-header-footer \

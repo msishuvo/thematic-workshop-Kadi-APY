@@ -1,7 +1,7 @@
 """Helper functions for reading and evaluating tensile test files.
 
 You don't need to change anything here. In your own lab this file would
-contain the code that reads YOUR instrument's output format.
+contain the code that reads your instrument's output format.
 """
 
 import csv

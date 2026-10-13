@@ -1,7 +1,7 @@
 """Exercise 3: batch-upload a whole tensile test campaign (20 min).
 
-The everyday lab situation: the testing machine has produced a folder of
-result files. Instead of uploading them one by one and copying numbers into
+The testing machine has written one result file per specimen into a
+folder. Instead of uploading them one by one and copying numbers into
 metadata fields by hand, this script does it for every file in the folder:
 
   1. create (or reuse) one record per sample
@@ -13,7 +13,7 @@ Fill in the TODOs, then run from the repository root:
 
     python exercises/03_batch_upload.py
 
-Stuck? Compare with exercises/solutions/03_batch_upload.py
+Solution: exercises/solutions/03_batch_upload.py
 """
 
 from pathlib import Path
@@ -22,7 +22,7 @@ from kadi_apy import KadiManager
 
 from tensile import evaluate  # helper in exercises/tensile.py
 
-# TODO 1: put YOUR prefix here.
+# TODO 1: set your prefix.
 PREFIX = "xy"
 DATA_FOLDER = Path("data/tensile_tests")
 CAMPAIGN_TAG = f"{PREFIX}-tensile-campaign"
@@ -43,7 +43,7 @@ collection = manager.collection(
     create=True,
 )
 
-# "for every CSV file in the folder, do the indented block below"
+# Run the indented block once for every CSV file in the folder.
 for csv_file in sorted(DATA_FOLDER.glob("*.csv")):
     sample_id = csv_file.stem.split("_")[0]  # "S01_tensile" -> "S01"
     print(f"Processing {csv_file.name} ...")
@@ -51,7 +51,7 @@ for csv_file in sorted(DATA_FOLDER.glob("*.csv")):
     # TODO 2: get or create the record for this sample.
     #   identifier: f"{PREFIX}-sample-{sample_id.lower()}"
     #   title:      f"Steel sample {sample_id}"
-    #   (look at exercise 2 if you don't remember how)
+    #   (see exercise 2)
     record = ...
 
     # Evaluate the curve: returns e.g. {"yield_strength": 364.1, ...}
@@ -78,5 +78,5 @@ for csv_file in sorted(DATA_FOLDER.glob("*.csv")):
 
 print(f"Done. Open the collection '{collection.meta['title']}' in Kadi4Mat.")
 
-# Stretch goal: create one record for the tensile testing machine and link
+# Optional: create one record for the tensile testing machine and link
 # every sample to it, e.g. record.link_record(machine.id, name="tested with")

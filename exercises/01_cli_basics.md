@@ -1,12 +1,12 @@
-# Exercise 1: The CLI (no Python needed) · 15 min
+# Exercise 1: Command line interface (15 min)
 
-Everything you click in the Kadi4Mat web interface can also be done from
-the terminal. That means it can be put in a script, run on a lab PC every
-night, or called from other software.
+Most actions in the Kadi4Mat web interface can also be done from the
+terminal, which means they can be put in a script or run automatically on a
+lab PC.
 
-> Replace `xy` with **your own prefix** (e.g. your initials) everywhere.
-> Identifiers must be unique across the whole Kadi4Mat instance and may only
-> contain lowercase letters, digits, `-` and `_`.
+Replace `xy` with your own prefix (e.g. your initials) in all commands.
+Identifiers must be unique in Kadi4Mat and may only contain lowercase
+letters, digits, `-` and `_`.
 
 Run all commands from the root folder of this repository.
 
@@ -16,7 +16,7 @@ Run all commands from the root folder of this repository.
 kadi-apy records create -i xy-sample-s01 -t "Steel sample S01"
 ```
 
-Open Kadi4Mat in your browser: the record is there.
+The record is now visible in Kadi4Mat.
 
 ## 2. Upload a measurement file
 
@@ -43,7 +43,7 @@ kadi-apy records add-metadatum -R xy-sample-s01 -m test_temperature -v 23 -t flo
 kadi-apy records add-tag -R xy-sample-s01 -t xy-tensile-campaign
 ```
 
-## 5. Look at what you made
+## 5. Show the record
 
 ```bash
 kadi-apy records show-info -R xy-sample-s01 -m -l
@@ -51,15 +51,13 @@ kadi-apy records show-info -R xy-sample-s01 -m -l
 
 `-m` shows metadata, `-l` shows the file list.
 
-## 6. Find it again
+## 6. Search by tag
 
 ```bash
 kadi-apy records get-records -t xy-tensile-campaign
 ```
 
-## Bonus
+## Further steps
 
 - Run `kadi-apy records --help` to see everything the CLI can do.
-- Try uploading the same file again. What happens? Now add `-f`.
-
-**Done?** Put up your green sticky note.
+- Upload the same file again, first without and then with `-f`.

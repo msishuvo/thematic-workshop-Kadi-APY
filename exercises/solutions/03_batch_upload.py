@@ -60,7 +60,7 @@ for csv_file in sorted(DATA_FOLDER.glob("*.csv")):
 
 print(f"Done. Open the collection '{collection.meta['title']}' in Kadi4Mat.")
 
-# Stretch goal: link every sample to a record describing the test machine.
+# Optional: link every sample to a record describing the test machine.
 # machine = manager.record(identifier=f"{PREFIX}-tensile-machine",
 #                          title="Tensile testing machine", create=True)
 # record.link_record(machine.id, name="tested with")

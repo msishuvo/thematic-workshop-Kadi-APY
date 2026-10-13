@@ -24,4 +24,4 @@ record.upload_file("data/tensile_tests/S02_tensile.csv", force=True)
 
 record.add_tag(f"{PREFIX}-tensile-campaign")
 
-print("Done! Now open the record in Kadi4Mat in your browser:", record)
+print("Done. Check the record in Kadi4Mat:", record)

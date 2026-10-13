@@ -38,7 +38,6 @@
   h2 { font-size: 13pt; margin: 0 0 3mm; color: var(--accent); }
   h3 { font-size: 10.5pt; margin: 4mm 0 1.5mm; }
   p { margin: 0 0 2mm; }
-  .kicker { text-transform: uppercase; letter-spacing: .08em; font-size: 7.5pt; color: var(--accent); font-weight: 600; }
   .lead { font-size: 10.5pt; color: var(--muted); margin-bottom: 5mm; }
   .fill { background: #fff3c4; padding: 0 1.2mm; border-radius: 1mm; font-weight: 600; }
   code, .mono { font-family: "DejaVu Sans Mono", "Liberation Mono", monospace; font-size: 8.4pt; }
@@ -65,8 +64,6 @@
   .checklist .title::before { content: counter(step) ". "; color: var(--accent); }
   .checklist .how { color: var(--muted); margin-top: .6mm; }
   .checklist ol, .checklist ul { margin: 1mm 0 0; padding-left: 4.5mm; color: var(--muted); }
-  .when { display: inline-block; font-size: 7.5pt; font-weight: 600; padding: .3mm 1.8mm; border-radius: 3mm;
-          background: var(--accent-soft); color: var(--accent); margin-left: 1.5mm; vertical-align: 1px; }
 
   .callout { border-left: 3px solid var(--accent); background: var(--accent-soft); padding: 2.5mm 3.5mm; border-radius: 0 1.5mm 1.5mm 0; margin: 3mm 0; }
   .callout.warn { border-color: var(--warn); background: var(--warn-soft); }
@@ -98,80 +95,75 @@
   .anatomy .part { border-top: 3px solid var(--accent); background: var(--code-bg); border-radius: 0 0 1.5mm 1.5mm; padding: 1.8mm 2.2mm; }
   .anatomy .part code { background: none; padding: 0; font-weight: 700; display: block; white-space: nowrap; }
   .anatomy .part span { display: block; font-size: 7.4pt; color: var(--muted); margin-top: .8mm; }
-  .anatomy .p2 { border-color: #2563eb; } .anatomy .p3 { border-color: #9333ea; } .anatomy .p4 { border-color: #b45309; }
 </style>
 </head>
 <body>
 
 <!-- ============ PAGE 1: BEFORE THE WORKSHOP ============ -->
 <section class="page">
-  <div class="kicker">Online workshop · Participant guide</div>
   <h1>Kadi-APY for everyday lab work</h1>
-  <p class="lead">From lab files to findable data with Kadi4Mat and a little Python.
-    No programming experience needed. Please work through <b>page 1 before the workshop</b>;
-    it takes about 20 minutes.</p>
+  <p class="lead">Online workshop, participant guide. Please complete the checklist on this page
+    before the workshop. It takes about 20 minutes.</p>
 
   <div class="info-row">
-    <div class="info"><div class="label">Date &amp; time</div><div class="value">Friday, 13 November 2026 · 14:00–16:00 (CET)</div></div>
+    <div class="info"><div class="label">Date &amp; time</div><div class="value">Friday, 13 November 2026, 14:00-16:00 (CET)</div></div>
     <div class="info"><div class="label">Meeting link</div><div class="value"><span class="fill">[FILL IN]</span></div></div>
   </div>
 
-  <h2>Before the workshop: checklist</h2>
+  <h2>Checklist before the workshop</h2>
   <ul class="checklist">
     <li><div class="box"></div><div>
-      <div class="title">Log in to Kadi4Mat <span class="when">2 min</span></div>
+      <div class="title">Log in to Kadi4Mat</div>
       <div class="how">Open <b>kadi4mat.iam.kit.edu</b> and log in. Kadi4Mat is the research data
-        repository where our data will be stored.</div>
+        repository used in the workshop.</div>
     </div></li>
     <li><div class="box"></div><div>
-      <div class="title">Create a personal access token <span class="when">3 min</span></div>
-      <div class="how">A token is like a password for programs. In Kadi4Mat:</div>
+      <div class="title">Create a personal access token</div>
+      <div class="how">The token allows kadi-apy to access Kadi4Mat on your behalf. In Kadi4Mat:</div>
       <ol>
-        <li>Click your name (top right) &rarr; <b>Settings</b> &rarr; <b>Access tokens</b>.</li>
+        <li>Click your name (top right), then Settings &gt; Access tokens.</li>
         <li>Name it <code>workshop</code>, set an expiry date a few days after the workshop, and create it.</li>
-        <li><b>Copy the token right away</b> into a text file. It is shown only once.</li>
+        <li>Copy the token right away, it is only shown once.</li>
       </ol>
     </div></li>
     <li><div class="box"></div><div>
-      <div class="title">Check your Google account <span class="when">1 min</span></div>
-      <div class="how">We use <b>Google Colab</b>: Python in your web browser, free, nothing to install.
-        Open <b>colab.research.google.com</b> and sign in with any Google account.</div>
+      <div class="title">Check your Google account</div>
+      <div class="how">The workshop uses Google Colab, which runs Python in the web browser.
+        Open <b>colab.research.google.com</b> and sign in with a Google account.</div>
     </div></li>
     <li><div class="box"></div><div>
-      <div class="title">Open the workshop notebook and save a copy <span class="when">2 min</span></div>
+      <div class="title">Open the workshop notebook and save a copy</div>
       <div class="how">Open <b><span class="fill">[FILL IN short link]</span></b>, then
-        <b>File &rarr; Save a copy in Drive</b>. Work in your copy from now on.</div>
+        File &gt; Save a copy in Drive. Work in your copy.</div>
     </div></li>
     <li><div class="box"></div><div>
-      <div class="title">Store your token as a Colab secret <span class="when">2 min</span></div>
-      <div class="how">In the notebook, click the <b>key icon</b> in the left sidebar &rarr; <b>Add new secret</b>.
-        Name: <code>KADI_PAT</code> (exactly like this), Value: your token. Switch on <b>Notebook access</b>.</div>
+      <div class="title">Store your token as a Colab secret</div>
+      <div class="how">In the notebook, click the key icon in the left sidebar, then "Add new secret".
+        Name: <code>KADI_PAT</code>, value: your token. Switch on "Notebook access".</div>
     </div></li>
     <li><div class="box"></div><div>
-      <div class="title">Run the setup cells (section 0) <span class="when">3 min</span></div>
-      <div class="how">Click into the first code cell and press <span class="kbd">Shift</span> + <span class="kbd">Enter</span>,
-        one cell after the other. In 0.4 change <code>"xy"</code> to your initials. You are done when you
-        see three green ticks: <b>Ready</b>, <b>Connected</b>, <b>Your prefix is ...</b></div>
+      <div class="title">Run the setup cells (section 0)</div>
+      <div class="how">Run the cells one after the other with <span class="kbd">Shift</span> + <span class="kbd">Enter</span>.
+        In cell 0.4, replace <code>"xy"</code> with your initials. The setup is complete when the output shows
+        "Setup complete", "Connected to ..." and "Prefix set to ...".</div>
     </div></li>
     <li><div class="box"></div><div>
-      <div class="title">Prepare your screen <span class="when">2 min</span></div>
-      <div class="how">Test microphone and the meeting chat. If you can, use two screens, or put the meeting
+      <div class="title">Prepare your screen</div>
+      <div class="how">Test your microphone and the meeting chat. If possible, use two screens or place the meeting
         and the notebook side by side. Keep Kadi4Mat open in a second browser tab.</div>
     </div></li>
   </ul>
 
-  <div class="callout warn"><b>Something didn't work?</b> No problem. Reply to the invitation e-mail with a
-    screenshot of the error before the workshop, or join 10 minutes early. Don't skip the checklist:
-    setup problems are much easier to fix before the session than during it.</div>
+  <div class="callout warn"><b>Problems with the setup?</b> Please reply to the invitation e-mail with a
+    screenshot of the error before the workshop, or join the meeting 10 minutes early.</div>
 
-  <div class="footer"><span>Kadi-APY workshop · Participant guide</span><span>1 / 4</span></div>
+  <div class="footer"><span>Kadi-APY Workshop, 13 November 2026</span><span>1 / 4</span></div>
 </section>
 
 <!-- ============ PAGE 2: CONCEPTS ============ -->
 <section class="page">
-  <div class="kicker">The big picture</div>
-  <h2>Kadi4Mat in one minute</h2>
-  <p>Kadi4Mat stores research data in a structured, searchable way. Three ideas are enough for today:</p>
+  <h2>Kadi4Mat basics</h2>
+  <p>Kadi4Mat stores research data together with structured, searchable metadata. The main terms used in the workshop:</p>
 
   <div class="diagram">
     <div class="coll">
@@ -187,7 +179,7 @@
             <tr><td class="mono" style="padding:.6mm 1mm;border:0">test_temperature</td><td style="padding:.6mm 1mm;border:0">23</td><td style="padding:.6mm 1mm;border:0">degC</td></tr>
           </table>
           <div class="part"><b>Tags</b> &nbsp;<span class="chip">xy-tensile-campaign</span></div>
-          <div class="part"><b>Links</b> &nbsp; "tested with" &rarr; Tensile machine</div>
+          <div class="part"><b>Links</b> &nbsp; "tested with": Tensile machine</div>
         </div>
         <div class="rec faded"><div class="rec-title">Record: Sample S02</div><div class="part">files, metadata, tags ...</div></div>
         <div class="rec faded"><div class="rec-title">Record: Sample S03</div><div class="part">files, metadata, tags ...</div></div>
@@ -196,71 +188,69 @@
   </div>
 
   <table>
-    <tr><th style="width:24%">Term</th><th>What it means for you</th></tr>
-    <tr><td class="k">Record</td><td>One "thing" you want to document: a sample, a measurement, a simulation run. Holds files and metadata.</td></tr>
-    <tr><td class="k">Metadata</td><td>Structured facts about a record: <b>key</b> (name), <b>type</b> (text, number, ...), <b>value</b> and <b>unit</b>. Searchable, unlike numbers buried in a file.</td></tr>
-    <tr><td class="k">Collection</td><td>A folder-like group of records, e.g. a project or test campaign.</td></tr>
-    <tr><td class="k">Tag</td><td>A keyword label for finding records later.</td></tr>
-    <tr><td class="k">Identifier</td><td>A unique short name for a record, e.g. <code>jd-sample-s01</code>. Unique across all of Kadi4Mat, so we put <b>your initials</b> in front.</td></tr>
+    <tr><th style="width:24%">Term</th><th>Meaning</th></tr>
+    <tr><td class="k">Record</td><td>One documented object, e.g. a sample, a measurement or a simulation run. Contains files and metadata.</td></tr>
+    <tr><td class="k">Metadata</td><td>Structured information about a record: key (name), type (text, number, ...), value and unit. Metadata can be searched.</td></tr>
+    <tr><td class="k">Collection</td><td>A group of records, e.g. a project or a test campaign.</td></tr>
+    <tr><td class="k">Tag</td><td>A keyword for finding records.</td></tr>
+    <tr><td class="k">Identifier</td><td>A short name for a record, e.g. <code>jd-sample-s01</code>. It must be unique in Kadi4Mat, so in the workshop it starts with your initials.</td></tr>
   </table>
 
   <h2 style="margin-top:5mm">What is kadi-apy?</h2>
-  <p>A remote control for Kadi4Mat. Anything you can click in the website, kadi-apy can do for you,
-    for one file or for a thousand.</p>
+  <p>kadi-apy is a Python library and command line tool for the Kadi4Mat API. Most actions of the
+    web interface can be scripted with it, which is useful when the same steps are repeated for many files.</p>
   <div class="ways">
-    <div class="way"><div class="name">Website</div><div class="sub">Click by hand. Fine for a few records.</div></div>
-    <div class="way"><div class="name">Command line</div><div class="sub"><code>kadi-apy records ...</code><br>One command per action. Easy to repeat.</div></div>
-    <div class="way"><div class="name">Python</div><div class="sub"><code>from kadi_apy import ...</code><br>Loops, calculations, reading your files.</div></div>
+    <div class="way"><div class="name">Website</div><div class="sub">Manual work, suitable for a few records.</div></div>
+    <div class="way"><div class="name">Command line</div><div class="sub"><code>kadi-apy records ...</code><br>One command per action.</div></div>
+    <div class="way"><div class="name">Python</div><div class="sub"><code>from kadi_apy import ...</code><br>Loops, calculations, reading files.</div></div>
   </div>
 
-  <div class="callout"><b>Where it saves you time:</b> uploading a whole folder of instrument files at once;
-    extracting results (e.g. yield strength) into metadata automatically; consistent names and tags for the
-    whole group; finding and downloading data for a report or paper.</div>
+  <div class="callout"><b>Typical uses:</b> uploading a folder of instrument files; extracting results (e.g. yield strength)
+    into metadata; consistent names and tags within a group; downloading data for a report or paper.</div>
 
-  <div class="footer"><span>Kadi-APY workshop · Participant guide</span><span>2 / 4</span></div>
+  <div class="footer"><span>Kadi-APY Workshop, 13 November 2026</span><span>2 / 4</span></div>
 </section>
 
 <!-- ============ PAGE 3: COLAB + CLI USAGE ============ -->
 <section class="page">
-  <div class="kicker">Tools</div>
-  <h2>Google Colab in one minute</h2>
+  <h2>Working in Google Colab</h2>
   <table>
-    <tr><th style="width:36%">You want to ...</th><th>Do this</th></tr>
-    <tr><td class="k">Run a cell</td><td>Click into it, press <span class="kbd">Shift</span> + <span class="kbd">Enter</span> (or the play button on the left).</td></tr>
-    <tr><td class="k">Know the order</td><td>Always <b>top to bottom</b>. Later cells use results of earlier ones.</td></tr>
-    <tr><td class="k">Do an exercise</td><td>Change only lines marked <code>TODO</code>, then run the cell.</td></tr>
-    <tr><td class="k">Get unstuck</td><td>Click <b>Show solution</b> below the exercise and copy the code.</td></tr>
-    <tr><td class="k">Read a <code>!</code> line</td><td>Lines starting with <code>!</code> are terminal commands, not Python.</td></tr>
-    <tr><td class="k">Fix "everything is broken"</td><td><b>Runtime &rarr; Restart session</b>, then run again from the top.</td></tr>
-    <tr><td class="k">Understand an error</td><td>Read the <b>last line</b> of the red message (or click <b>Explain error</b>).</td></tr>
+    <tr><th style="width:36%">Task</th><th>How</th></tr>
+    <tr><td class="k">Run a cell</td><td><span class="kbd">Shift</span> + <span class="kbd">Enter</span>, or the run button on the left of the cell.</td></tr>
+    <tr><td class="k">Order</td><td>From top to bottom. Later cells use results of earlier ones.</td></tr>
+    <tr><td class="k">Exercises</td><td>Change only lines marked <code>TODO</code>, then run the cell.</td></tr>
+    <tr><td class="k">Solutions</td><td>Open "Show solution" below the exercise.</td></tr>
+    <tr><td class="k">Lines starting with <code>!</code></td><td>Run as terminal commands, not as Python.</td></tr>
+    <tr><td class="k">Reset</td><td>Runtime &gt; Restart session, then run the cells again from the top.</td></tr>
+    <tr><td class="k">Errors</td><td>The last line of the error message usually names the problem.</td></tr>
   </table>
 
   <h2 style="margin-top:3mm">Using the command line (CLI)</h2>
-  <p>With the CLI you control Kadi4Mat by typing short commands instead of clicking. Every command has the same structure:</p>
+  <p>All kadi-apy commands have the same structure:</p>
   <div class="anatomy">
     <div class="part p1"><code>kadi-apy</code><span>the program</span></div>
-    <div class="part p2"><code>records</code><span>what: records, collections, ...</span></div>
+    <div class="part p2"><code>records</code><span>resource type: records, collections, ...</span></div>
     <div class="part p3"><code>add-metadatum</code><span>the action</span></div>
-    <div class="part p4"><code>-R jd-sample-s01 -m length -v 80 -t float -u mm</code><span>options: <b>-letter value</b>, the details of the action</span></div>
+    <div class="part p4"><code>-R jd-sample-s01 -m length -v 80 -t float -u mm</code><span>options, each as <b>-letter value</b></span></div>
   </div>
 
   <div class="two">
     <div>
-      <h3>Where to type it</h3>
-      <p><b>In Colab:</b> in a code cell, with <code>!</code> in front:</p>
+      <h3>Where to run commands</h3>
+      <p><b>Colab:</b> in a code cell, with <code>!</code> in front:</p>
 <pre>!kadi-apy records --help</pre>
-      <p><b>On your own computer:</b> in a terminal (Windows: <i>Anaconda Prompt</i> or <i>Command Prompt</i>; macOS: <i>Terminal</i>), without <code>!</code>. One-time setup:</p>
+      <p><b>Own computer:</b> in a terminal (Windows: <i>Anaconda Prompt</i> or <i>Command Prompt</i>; macOS: <i>Terminal</i>), without <code>!</code>. One-time setup:</p>
 <pre>pip install kadi-apy
 kadi-apy config create    <span class="cmt"># new config</span>
 kadi-apy config set-host  <span class="cmt"># Kadi4Mat URL</span>
 kadi-apy config set-pat   <span class="cmt"># your token</span></pre>
-      <h3>Three rules</h3>
-      <p style="margin:0">Text with spaces goes in quotes: <code>-t "Steel sample S01"</code>.<br>
-        Upper and lower case matter: <code>-R</code> is not <code>-r</code>.<br>
-        Forgot an option? Add <code>--help</code> to any command.</p>
+      <h3>Notes</h3>
+      <p style="margin:0">Values with spaces need quotes: <code>-t "Steel sample S01"</code>.<br>
+        Options are case-sensitive: <code>-R</code> and <code>-r</code> are different.<br>
+        <code>--help</code> after any command lists its options.</p>
     </div>
     <div>
-      <h3>Options used today</h3>
+      <h3>Options used in the workshop</h3>
       <table style="margin-top:0">
         <tr><th>Option</th><th>Meaning</th></tr>
         <tr><td class="mono">-i</td><td>identifier of a <b>new</b> record (<code>create</code>)</td></tr>
@@ -269,30 +259,28 @@ kadi-apy config set-pat   <span class="cmt"># your token</span></pre>
         <tr><td class="mono">-n</td><td>file or folder to upload</td></tr>
         <tr><td class="mono">-m&nbsp;-v</td><td>metadata name and value</td></tr>
         <tr><td class="mono">-u</td><td>unit, e.g. <code>mm</code>, <code>MPa</code></td></tr>
-        <tr><td class="mono">-f</td><td>force: overwrite what already exists</td></tr>
+        <tr><td class="mono">-f</td><td>overwrite existing files or metadata</td></tr>
         <tr><td class="mono">--help</td><td>show all options of a command</td></tr>
       </table>
     </div>
   </div>
 
   <div class="two" style="margin-top:4mm">
-    <div class="callout" style="margin:0"><b>During the online session</b><br>
-      Post a quick message in the chat when you finish an exercise.<br>
-      Stuck for more than 2 minutes? Write in the chat; a helper will take you to a breakout room.<br>
-      No question is too basic.</div>
+    <div class="callout" style="margin:0"><b>During the workshop</b><br>
+      Please write in the chat when you have finished an exercise,
+      and post questions or error messages there at any time.</div>
     <div class="callout" style="margin:0"><b>After the workshop</b><br>
-      Docs: kadi-apy.readthedocs.io<br>
+      Documentation: kadi-apy.readthedocs.io<br>
       Material: github.com/msishuvo/thematic-workshop-kadiAPY<br>
-      Real lab data? Check your data policy before using Colab, or run kadi-apy on your own computer.</div>
+      For unpublished lab data, check your institute's data policy before using Colab.</div>
   </div>
 
-  <div class="footer"><span>Kadi-APY workshop · Participant guide</span><span>3 / 4</span></div>
+  <div class="footer"><span>Kadi-APY Workshop, 13 November 2026</span><span>3 / 4</span></div>
 </section>
 
 <!-- ============ PAGE 4: CHEAT SHEET + TROUBLESHOOTING ============ -->
 <section class="page">
-  <div class="kicker">Keep this open during the workshop</div>
-  <h2>kadi-apy cheat sheet</h2>
+  <h2>Command reference</h2>
   <h3>Command line <span style="font-weight:400;color:var(--muted)">(in Colab, put <code>!</code> in front)</span></h3>
 <pre><span class="cmt"># create a record</span>
 kadi-apy records create -i jd-sample-s01 -t "Sample S01"
@@ -310,7 +298,7 @@ kadi-apy records --help</pre>
 
   <h3>Python</h3>
 <pre>from kadi_apy import KadiManager
-manager = KadiManager()                       <span class="cmt"># your login (reads the config)</span>
+manager = KadiManager()                       <span class="cmt"># connection, reads the config file</span>
 
 <span class="cmt"># get the record, or create it if it does not exist yet</span>
 record = manager.record(identifier="jd-sample-s01", title="Sample S01", create=True)
@@ -326,18 +314,18 @@ record.add_tag("jd-tensile-campaign")                    <span class="cmt"># add
 collection = manager.collection(identifier="jd-campaign", title="Campaign", create=True)
 record.add_collection_link(collection.id)</pre>
 
-  <h2 style="margin-top:2mm">If you see this error ...</h2>
+  <h2 style="margin-top:2mm">Common errors</h2>
   <table>
-    <tr><th style="width:36%">Message (last line)</th><th>Usually means / fix</th></tr>
-    <tr><td class="k">NameError: name 'manager' is not defined</td><td>An earlier cell was not run (often after a restart). Run section 0 again, top to bottom.</td></tr>
-    <tr><td class="k">Could not read the secret KADI_PAT</td><td>Secret name misspelled, or <b>Notebook access</b> is off. Check the key icon in the sidebar.</td></tr>
-    <tr><td class="k">401 / "invalid access token"</td><td>Token copied incompletely or expired. Create a new one and update the secret.</td></tr>
-    <tr><td class="k">identifier ... already in use</td><td>Someone else owns that identifier. Check that your prefix is set to <b>your</b> initials.</td></tr>
-    <tr><td class="k">IndentationError</td><td>Spaces at the start of a line don't match. Copy the line from the solution.</td></tr>
-    <tr><td class="k">SyntaxError</td><td>Usually a missing quote <code>"</code>, bracket <code>)</code> or comma. Compare with the solution.</td></tr>
+    <tr><th style="width:36%">Message</th><th>Cause and solution</th></tr>
+    <tr><td class="k">NameError: name 'manager' is not defined</td><td>An earlier cell was not run, e.g. after a restart. Run section 0 again.</td></tr>
+    <tr><td class="k">Could not read the secret KADI_PAT</td><td>Secret name misspelled or "Notebook access" switched off.</td></tr>
+    <tr><td class="k">401 / "invalid access token"</td><td>Token incomplete or expired. Create a new token and update the secret.</td></tr>
+    <tr><td class="k">identifier ... already in use</td><td>The identifier belongs to someone else. Check your prefix.</td></tr>
+    <tr><td class="k">IndentationError</td><td>Wrong number of spaces at the start of a line. Compare with the solution.</td></tr>
+    <tr><td class="k">SyntaxError</td><td>Usually a missing quote, bracket or comma. Compare with the solution.</td></tr>
   </table>
 
-  <div class="footer"><span>Kadi-APY workshop · Participant guide</span><span>4 / 4</span></div>
+  <div class="footer"><span>Kadi-APY Workshop, 13 November 2026</span><span>4 / 4</span></div>
 </section>
 
 </body>

@@ -6,12 +6,12 @@ Fill in the lines marked TODO, then run from the repository root:
 
     python exercises/02_first_script.py
 
-Stuck? Compare with exercises/solutions/02_first_script.py
+Solution: exercises/solutions/02_first_script.py
 """
 
 from kadi_apy import KadiManager
 
-# TODO 1: put YOUR prefix here (e.g. your initials, lowercase).
+# TODO 1: set your prefix (your initials, lowercase).
 PREFIX = "xy"
 
 # The manager is "your login". It reads the host and token you saved with
@@ -43,4 +43,4 @@ record.add_metadata(metadata, force=True)
 # Tags make records easy to find later.
 record.add_tag(f"{PREFIX}-tensile-campaign")
 
-print("Done! Now open the record in Kadi4Mat in your browser:", record)
+print("Done. Check the record in Kadi4Mat:", record)
