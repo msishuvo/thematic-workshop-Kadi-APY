@@ -1,7 +1,7 @@
 # Participant Setup (please complete before the workshop)
 
 The short, printable version of this is the participant guide PDF
-([participant-guide.pdf](participant-guide/participant-guide.pdf)), page 1.
+([participant-guide.pdf](participant-guide.pdf)), page 1.
 
 We use **Google Colab**: Python in your browser, nothing to install. It takes
 about 15 minutes. If anything fails, reply to the invitation with a screenshot

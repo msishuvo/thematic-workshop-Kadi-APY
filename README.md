@@ -37,20 +37,16 @@ data management tasks in [Kadi4Mat](https://kadi.iam.kit.edu/).
 | 1:20 – 1:30 | Exercise 4: find, download, plot          | Code-along      |
 | 1:30 – 2:00 | Discussion: "your lab, your workflow"     | Moderated       |
 
-Full minute-by-minute plan: [docs/run-of-show.md](docs/run-of-show.md)
-
 ## Repository layout
 
 ```
 notebooks/
   kadi_apy_workshop.ipynb main workshop material: all exercises, runs in Colab
 docs/
-  participant-guide/      4-page PDF for participants (checklist, concepts,
-                          Colab + command line usage, cheat sheet) + HTML source
-  run-of-show.md          detailed timing, talking points, facilitator notes
-  organizer-checklist.md  what to prepare and when (T-4 weeks to T+1 week)
+  participant-guide.pdf   4-page PDF for participants (checklist, concepts,
+                          Colab + command line usage, cheat sheet)
+  participant-guide.html  editable source of the PDF
   participant-setup.md    setup instructions (Colab, or local install)
-  discussion-guide.md     structure for the 30 min discussion
 exercises/                same exercises as plain scripts, for running locally
   01_cli_basics.md        CLI commands, no Python
   02_first_script.py      create a record, add metadata, upload a file
@@ -70,16 +66,16 @@ data/
 4. Run section 0 of the notebook.
 
 Full instructions: [docs/participant-setup.md](docs/participant-setup.md) and the
-[participant guide PDF](docs/participant-guide/participant-guide.pdf).
+[participant guide PDF](docs/participant-guide.pdf).
 
 ## Updating the participant guide PDF
 
-Edit `docs/participant-guide/participant-guide.html` (fill in the yellow
+Edit `docs/participant-guide.html` (fill in the yellow
 `[FILL IN]` fields), open it in Chrome and *Print → Save as PDF* (margins: none),
 or run:
 
 ```bash
 chromium --headless --no-pdf-header-footer \
-  --print-to-pdf=docs/participant-guide/participant-guide.pdf \
-  docs/participant-guide/participant-guide.html
+  --print-to-pdf=docs/participant-guide.pdf \
+  docs/participant-guide.html
 ```
