@@ -1,118 +1,118 @@
-# Run of Show
+# Run of Show (online)
 
 Total: **2 hours** = 90 min hands-on + 30 min discussion.
+Main material: the Colab notebook `notebooks/kadi_apy_workshop.ipynb`.
+Participants keep the participant guide PDF open on the side.
 
 Guiding principles for this audience (zero to moderate Python):
 
-- **Show the payoff first.** Open with the finished result, not with installation.
-- **CLI before Python.** The CLI gives non-programmers an early win and shows
-  that kadi-apy is not "only for coders".
-- **Fill in the blanks, never type from scratch.** Every exercise is a
-  prepared file with a few clearly marked `TODO` lines. Typos eat workshops.
+- **Show the payoff first.** Open with the finished result, not with setup.
+- **CLI before Python.** The command line gives non-programmers an early win
+  and shows that kadi-apy is not "only for coders".
+- **Fill in the blanks, never type from scratch.** Every exercise cell has a
+  few clearly marked `TODO` lines and a "Show solution" box below it.
 - **One lab story throughout.** All exercises use the same scenario (a tensile
   test campaign on three steel samples), so each step builds on the last.
-- **Always have an escape hatch.** Every exercise has a solution file; anyone
-  who falls behind copies it and keeps going.
-- **Unique names per person.** Kadi4Mat record identifiers are unique across
-  the whole instance. Every participant uses their own prefix (e.g. initials,
-  `jd-`) or 20 people will try to create `sample-s01` at the same time.
+- **Always have an escape hatch.** Anyone who falls behind copies the solution
+  and keeps going.
+- **Unique names per person.** Kadi4Mat identifiers are unique across the
+  whole instance, so every participant sets their own prefix (initials) in
+  notebook cell 0.4.
+
+## Online roles
+
+| Role | Job |
+|---|---|
+| **Presenter** | Shares screen (Colab + Kadi4Mat tab), large font (browser zoom 150 %), live-codes |
+| **Chat moderator** | Watches chat, answers quick questions, tells the presenter when many people are stuck |
+| **Helpers** (1 per ~8 people) | Take stuck participants into breakout rooms, ask them to share their screen |
+
+Agree on signals at the start: write **"done"** in the chat (or use the
+"thumbs up" reaction) when an exercise is finished; write **"help"** in the
+chat when stuck for more than 2 minutes.
 
 ---
 
 ## 0:00 – 0:10 · Welcome and motivation (talk + demo)
 
-- 2 min: who we are, helpers, how to ask for help (sticky notes: green = done,
-  red/pink = need help, on the laptop lid).
-- 3 min: **the pain.** Ask for a show of hands:
+- 2 min: who we are, roles, the done/help signals, "cameras optional,
+  questions welcome".
+- 3 min: **the pain.** Quick poll (meeting poll or reactions):
   - "Who has uploaded 20+ files to Kadi4Mat one by one?"
   - "Who has copied numbers from a results file into a metadata field by hand?"
   - "Who has a folder called `final_v3_really_final`?"
-- 5 min: **live demo of the end result.** Run `exercises/solutions/03_batch_upload.py`
-  on screen: in ~10 seconds, 3 sample records appear in Kadi4Mat with files,
-  extracted yield/tensile strength as metadata, tags, links and a collection.
-  Open the web UI and click through it. Then say: *"In 80 minutes you'll have
-  written this yourself."*
+- 5 min: **live demo of the end result.** In a prepared copy of the notebook,
+  run sections 3 and 4 with the solutions filled in: three sample records
+  appear in Kadi4Mat with files, extracted yield/tensile strength, tags and a
+  collection, then the combined stress–strain plot. Click through the result
+  in the Kadi4Mat tab. Then say: *"In 80 minutes you'll have done this yourself."*
 
 ## 0:10 – 0:20 · Setup check (hands-on)
 
-Most setup should be done before the workshop (see
-`participant-setup.md`). This slot is for verification and rescue.
+Setup should be done before the workshop (participant guide, page 1). This
+slot is for verification and rescue.
 
-1. Everyone runs `kadi-apy config get-kadi-info`.
-2. Green sticky note if it works. Helpers go to every red one.
-3. Common fixes:
-   - Wrong host URL (must be the base URL, e.g. `https://kadi4mat.example.org`)
-   - Token copied with a trailing space, or created without needed scopes
-   - `kadi-apy` not on PATH → use `python -m kadi_apy ...` or reopen terminal
-   - Corporate proxy / SSL issues → have participants use the prepared
-     JupyterHub instead (see organizer checklist)
+1. Everyone opens **their saved copy** of the notebook and runs section 0.
+2. "done" in the chat when you see the three ✅ lines.
+3. Helpers take everyone else into breakout rooms. Common fixes:
+   - Secret not named exactly `KADI_PAT`, or *Notebook access* switched off
+   - Token copied incompletely, or expired → create a new one
+   - Working in the read-only original instead of the saved copy → *File → Save a copy in Drive*
+   - Prefix still `xy` → cell 0.4 stops with a friendly message
+   - No Google account / Colab blocked → let them follow along on screen
+     and pair them with a helper; they can catch up with the local scripts later
 
-Facilitator tip: while people wait, show the Kadi4Mat web UI and explain the
-3 concepts used today: **record** (one sample / one measurement), **collection**
-(a project or campaign), **extras** (structured metadata: key, type, value, unit).
+While people wait, show the Kadi4Mat web UI and explain the three concepts of
+the day: **record**, **collection**, **metadata** (key, type, value, unit),
+as on page 2 of the participant guide.
 
-## 0:20 – 0:35 · Exercise 1: the CLI (hands-on)
+## 0:20 – 0:35 · Section 1: the command line (hands-on)
 
-File: `exercises/01_cli_basics.md`
+Participants create a record, upload a file, add metadata and a tag, all
+with `!kadi-apy ...` cells. Ask them to keep the Kadi4Mat tab open and
+refresh after each step. Small self-made task at the end: add an `operator`
+metadatum.
 
-Participants create a record, upload a file, add metadata and a tag,
-entirely from the terminal. Takeaway: *"I can script this in a shell loop
-or call it from any tool."*
+Debrief (2 min): "When would the command line alone be enough for you?"
+(e.g. a nightly upload from an instrument PC folder).
 
-Debrief (2 min): open the record in the browser. Ask: "When would the CLI
-alone be enough for you?" (e.g. a nightly backup of an instrument PC folder).
+## 0:35 – 0:55 · Section 2: first Python script (code-along)
 
-## 0:35 – 0:55 · Exercise 2: first Python script (code-along)
+Presenter types, participants follow. Explain only what is needed:
 
-File: `exercises/02_first_script.py`
-
-Instructor types on a big font, participants follow. Explain only what is
-needed:
-
-- `KadiManager()` reads the config you created → "your login"
-- `manager.record(identifier=..., title=..., create=True)` → "get or create"
-- metadata is a list of small dictionaries: `key`, `type`, `value`, `unit`
+- `manager` = "your login" (created in setup)
+- `manager.record(identifier=..., title=..., create=True)` = "get or create"
+- metadata = a list of small dictionaries: `key`, `type`, `value`, `unit`
 - `record.upload_file(path)` → done
 
-Python concepts introduced (just in time, nothing more): variables,
-strings, dictionaries, a function call. Keep it at that.
+Python concepts introduced just in time: variables, strings, dictionaries,
+a function call (page 3 of the participant guide).
 
 ## 0:55 – 1:00 · Break / buffer
 
-Use it as a catch-up buffer. Helpers make sure everyone has a working
-Exercise 2 (or copied the solution).
+Camera-off break. Helpers check that everyone has a working section 2
+(or has copied the solution).
 
-## 1:00 – 1:20 · Exercise 3: batch-upload a test campaign (hands-on)
-
-File: `exercises/03_batch_upload.py`
+## 1:00 – 1:20 · Section 3: batch upload a test campaign (hands-on)
 
 The core "daily lab" use case. For every CSV in `data/tensile_tests/`:
+create a record, evaluate the curve (yield strength by 0.2 % offset, tensile
+strength, ...; the function is provided), store the results as metadata with
+units, upload the raw file, tag it, and add it to a collection.
 
-1. create a record per sample
-2. compute yield strength (0.2 % offset) and ultimate tensile strength
-   from the CSV (the function is provided; participants don't write it)
-3. store them as metadata with units
-4. upload the raw CSV
-5. tag it and add it to a collection for the campaign
+Participants fill in three `TODO` lines. One new concept: the `for` loop
+("do this for every file in the folder"). Stretch goal for fast participants:
+link every sample to a "tensile machine" record.
 
-Participants only fill in ~5 `TODO` lines. Introduce one new concept: the
-`for` loop ("do this for every file in the folder").
+## 1:20 – 1:30 · Section 4: find, download, plot (code-along)
 
-Stretch goal for faster participants: link each sample record to a
-"tensile test machine" record with `record.link_record(...)`.
+Search by tag, print a metadata table, download the CSVs and plot all
+curves together. Takeaway: *"Kadi4Mat is not just storage; my data comes back
+out in a form I can analyse."*
 
-## 1:20 – 1:30 · Exercise 4: find, download, plot (code-along)
-
-File: `exercises/04_find_and_plot.py`
-
-Search for all records with the tag from Exercise 3, print a small table of
-their metadata, download the CSVs and plot all stress-strain curves into one
-figure. Takeaway: *"Kadi4Mat is not just storage; my data comes back out
-in a form I can analyse."*
-
-Wrap-up (last 2 min): one slide with links (docs, this repo, support
-contact) and "what to try tomorrow": replace `data/tensile_tests` with a
-folder from your own instrument.
+Wrap-up (last 2 min): links (in the chat too), and "what to try tomorrow":
+upload a few of your own files to Colab and adapt section 3 (check your
+institute's data policy first).
 
 ## 1:30 – 2:00 · Discussion (moderated)
 

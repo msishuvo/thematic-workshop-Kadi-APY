@@ -5,7 +5,11 @@ A hands-on workshop for materials scientists on using
 ([docs](https://kadi-apy.readthedocs.io/en/stable/)) to automate routine
 data management tasks in [Kadi4Mat](https://kadi.iam.kit.edu/).
 
-- **Format:** 90 min hands-on + 30 min discussion (2 h total)
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/msishuvo/thematic-workshop-kadiAPY/blob/main/notebooks/kadi_apy_workshop.ipynb)
+
+- **Format:** online, 90 min hands-on + 30 min discussion (2 h total)
+- **Environment:** Google Colab (nothing to install), Kadi4Mat at
+  <https://kadi4mat.iam.kit.edu>
 - **Audience:** materials scientists, zero to moderate Python experience
 - **Goal:** participants leave with a working script they can adapt to their
   own lab data the next day
@@ -37,12 +41,16 @@ Full minute-by-minute plan: [docs/run-of-show.md](docs/run-of-show.md)
 ## Repository layout
 
 ```
+notebooks/
+  kadi_apy_workshop.ipynb main workshop material: all exercises, runs in Colab
 docs/
+  participant-guide/      4-page PDF for participants (checklist, concepts,
+                          Python basics, cheat sheet) + its HTML source
   run-of-show.md          detailed timing, talking points, facilitator notes
   organizer-checklist.md  what to prepare and when (T-4 weeks to T+1 week)
-  participant-setup.md    send to participants ~1 week before
+  participant-setup.md    setup instructions (Colab, or local install)
   discussion-guide.md     structure for the 30 min discussion
-exercises/
+exercises/                same exercises as plain scripts, for running locally
   01_cli_basics.md        CLI commands, no Python
   02_first_script.py      create a record, add metadata, upload a file
   03_batch_upload.py      upload a whole test campaign + extract metadata
@@ -54,10 +62,23 @@ data/
 
 ## Quick start (participants)
 
-```bash
-pip install kadi-apy matplotlib
-kadi-apy config create          # enter host URL + personal access token
-kadi-apy config get-kadi-info   # should print info about the instance
-```
+1. Create a personal access token in Kadi4Mat (Settings → Access tokens).
+2. Open the notebook with the **Open in Colab** button above and
+   *File → Save a copy in Drive*.
+3. Store the token as a Colab secret named `KADI_PAT` (key icon in the sidebar).
+4. Run section 0 of the notebook.
 
-See [docs/participant-setup.md](docs/participant-setup.md) for details.
+Full instructions: [docs/participant-setup.md](docs/participant-setup.md) and the
+[participant guide PDF](docs/participant-guide/participant-guide.pdf).
+
+## Updating the participant guide PDF
+
+Edit `docs/participant-guide/participant-guide.html` (fill in the yellow
+`[FILL IN]` fields), open it in Chrome and *Print → Save as PDF* (margins: none),
+or run:
+
+```bash
+chromium --headless --no-pdf-header-footer \
+  --print-to-pdf=docs/participant-guide/participant-guide.pdf \
+  docs/participant-guide/participant-guide.html
+```
