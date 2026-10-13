@@ -1,9 +1,4 @@
-"""Exercise 3 (solution): batch-upload a whole tensile test campaign.
-
-Run from the repository root:
-
-    python exercises/solutions/03_batch_upload.py
-"""
+"""Part 4 (solution): batch upload of a tensile test campaign."""
 
 import sys
 from pathlib import Path
@@ -24,9 +19,14 @@ UNITS = {
     "elongation_at_break": "%",
 }
 
+# Part A: example, evaluate all files in the folder
+for csv_file in sorted(DATA_FOLDER.glob("*.csv")):
+    sample_id = csv_file.stem.split("_")[0]
+    print(sample_id, evaluate(csv_file))
+
+# Part B: exercise, upload all samples
 manager = KadiManager()
 
-# One collection for the whole test campaign.
 collection = manager.collection(
     identifier=f"{PREFIX}-tensile-campaign-2026",
     title="Tensile test campaign 2026",
@@ -34,8 +34,7 @@ collection = manager.collection(
 )
 
 for csv_file in sorted(DATA_FOLDER.glob("*.csv")):
-    sample_id = csv_file.stem.split("_")[0]  # "S01_tensile" -> "S01"
-    print(f"Processing {csv_file.name} ...")
+    sample_id = csv_file.stem.split("_")[0]
 
     record = manager.record(
         identifier=f"{PREFIX}-sample-{sample_id.lower()}",
@@ -50,17 +49,16 @@ for csv_file in sorted(DATA_FOLDER.glob("*.csv")):
     ]
     for key, value in results.items():
         metadata.append({"key": key, "type": "float", "value": value, "unit": UNITS[key]})
-    record.add_metadata(metadata, force=True)
 
+    record.add_metadata(metadata, force=True)
     record.upload_file(str(csv_file), force=True)
     record.add_tag(CAMPAIGN_TAG)
     record.add_collection_link(collection.id)
 
-    print(f"  -> {record}  {results}")
+    print(sample_id, "uploaded")
 
 print(f"Done. Open the collection '{collection.meta['title']}' in Kadi4Mat.")
 
-# Optional: link every sample to a record describing the test machine.
-# machine = manager.record(identifier=f"{PREFIX}-tensile-machine",
-#                          title="Tensile testing machine", create=True)
+# Optional: link every sample to the machine record from part 2.
+# machine = manager.record(identifier=f"{PREFIX}-tensile-machine")
 # record.link_record(machine.id, name="tested with")

@@ -218,8 +218,8 @@
     <tr><th style="width:36%">Task</th><th>How</th></tr>
     <tr><td class="k">Run a cell</td><td><span class="kbd">Shift</span> + <span class="kbd">Enter</span>, or the run button on the left of the cell.</td></tr>
     <tr><td class="k">Order</td><td>From top to bottom. Later cells use results of earlier ones.</td></tr>
-    <tr><td class="k">Exercises</td><td>Change only lines marked <code>TODO</code>, then run the cell.</td></tr>
-    <tr><td class="k">Solutions</td><td>Open "Show solution" below the exercise.</td></tr>
+    <tr><td class="k">Structure</td><td>Each part: example, reference with documentation links, exercise.</td></tr>
+    <tr><td class="k">Exercises</td><td>Change only lines marked <code>TODO</code>. Solution: "Show solution".</td></tr>
     <tr><td class="k">Lines starting with <code>!</code></td><td>Run as terminal commands, not as Python.</td></tr>
     <tr><td class="k">Reset</td><td>Runtime &gt; Restart session, then run the cells again from the top.</td></tr>
     <tr><td class="k">Errors</td><td>The last line of the error message usually names the problem.</td></tr>
@@ -281,6 +281,8 @@ kadi-apy config set-pat   <span class="cmt"># your token</span></pre>
 <!-- ============ PAGE 4: CHEAT SHEET + TROUBLESHOOTING ============ -->
 <section class="page">
   <h2>Command reference</h2>
+  <p>Full documentation: <b>kadi-apy.readthedocs.io</b>, pages Usage &gt; Library (Python) and Usage &gt; CLI.
+    In Colab: <code>help(Record.upload_file)</code> or <code>!kadi-apy records add-files --help</code>.</p>
   <h3>Command line <span style="font-weight:400;color:var(--muted)">(in Colab, put <code>!</code> in front)</span></h3>
 <pre><span class="cmt"># create a record</span>
 kadi-apy records create -i jd-sample-s01 -t "Sample S01"

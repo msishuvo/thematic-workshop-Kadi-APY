@@ -1,28 +1,32 @@
-"""Exercise 3: batch-upload a whole tensile test campaign (20 min).
+"""Part 4: batch upload of a tensile test campaign (20 min).
 
-The testing machine has written one result file per specimen into a
-folder. Instead of uploading them one by one and copying numbers into
-metadata fields by hand, this script does it for every file in the folder:
+The testing machine has written one result file per specimen into a folder.
+Instead of uploading the files one by one and copying values into the
+metadata by hand, a loop does this for every file.
 
-  1. create (or reuse) one record per sample
-  2. evaluate the curve (yield strength etc.) -> store as metadata with units
-  3. upload the raw CSV file
-  4. tag the record and add it to a collection for the campaign
+Part A is a complete example: a loop that evaluates every file. Part B is
+the exercise: extend the loop so that it uploads everything to Kadi4Mat.
 
-Fill in the TODOs, then run from the repository root:
+Run from the repository root:
 
     python exercises/03_batch_upload.py
 
 Solution: exercises/solutions/03_batch_upload.py
+
+Reference (https://kadi-apy.readthedocs.io/en/stable/usage/lib.html):
+    KadiManager.collection      get or create a collection, parameters: see "Collection"
+    Record.add_collection_link  add a record to a collection
+    Record.link_record          link two records, e.g. sample and machine
+Related: Record.remove_collection_link, Record.get_record_links
 """
 
 from pathlib import Path
 
 from kadi_apy import KadiManager
 
-from tensile import evaluate  # helper in exercises/tensile.py
+from tensile import evaluate  # in exercises/tensile.py
 
-# TODO 1: set your prefix.
+# TODO: set your prefix.
 PREFIX = "xy"
 DATA_FOLDER = Path("data/tensile_tests")
 CAMPAIGN_TAG = f"{PREFIX}-tensile-campaign"
@@ -34,6 +38,22 @@ UNITS = {
     "elongation_at_break": "%",
 }
 
+
+# ---------------------------------------------------------------------------
+# Part A: example, evaluate all files in the folder
+# ---------------------------------------------------------------------------
+
+# The indented block runs once for every CSV file in the folder.
+for csv_file in sorted(DATA_FOLDER.glob("*.csv")):
+    sample_id = csv_file.stem.split("_")[0]  # "S01_tensile" -> "S01"
+    results = evaluate(csv_file)  # e.g. {"yield_strength": 364.1, ...}
+    print(sample_id, results)
+
+
+# ---------------------------------------------------------------------------
+# Part B: exercise, upload all samples
+# ---------------------------------------------------------------------------
+
 manager = KadiManager()
 
 # One collection for the whole test campaign.
@@ -43,20 +63,16 @@ collection = manager.collection(
     create=True,
 )
 
-# Run the indented block once for every CSV file in the folder.
 for csv_file in sorted(DATA_FOLDER.glob("*.csv")):
-    sample_id = csv_file.stem.split("_")[0]  # "S01_tensile" -> "S01"
-    print(f"Processing {csv_file.name} ...")
+    sample_id = csv_file.stem.split("_")[0]
 
-    # TODO 2: get or create the record for this sample.
-    #   identifier: f"{PREFIX}-sample-{sample_id.lower()}"
-    #   title:      f"Steel sample {sample_id}"
-    #   (see exercise 2)
-    record = ...
+    record = manager.record(
+        identifier=f"{PREFIX}-sample-{sample_id.lower()}",
+        title=f"Steel sample {sample_id}",
+        create=True,
+    )
 
-    # Evaluate the curve: returns e.g. {"yield_strength": 364.1, ...}
     results = evaluate(csv_file)
-
     metadata = [
         {"key": "material", "type": "str", "value": "S355 steel"},
         {"key": "test_standard", "type": "str", "value": "ISO 6892-1"},
@@ -64,19 +80,19 @@ for csv_file in sorted(DATA_FOLDER.glob("*.csv")):
     for key, value in results.items():
         metadata.append({"key": key, "type": "float", "value": value, "unit": UNITS[key]})
 
-    # TODO 3: add the metadata list to the record (use force=True).
+    # TODO 1: add the metadata to the record (use force=True)
 
-    # TODO 4: upload the CSV file. Note: upload_file wants a string,
-    #         so use str(csv_file).
+    # TODO 2: upload the CSV file (upload_file expects a string: str(csv_file))
 
-    # TODO 5: add the tag CAMPAIGN_TAG to the record.
+    # TODO 3: add the tag CAMPAIGN_TAG
 
-    # Put the record into the campaign collection.
-    record.add_collection_link(collection.id)
+    # TODO 4: add the record to the collection (use collection.id)
 
-    print(f"  -> {record}  {results}")
+    print(sample_id, "uploaded")
 
 print(f"Done. Open the collection '{collection.meta['title']}' in Kadi4Mat.")
 
-# Optional: create one record for the tensile testing machine and link
-# every sample to it, e.g. record.link_record(machine.id, name="tested with")
+# Optional: link every sample to the machine record from part 2, e.g.
+#   machine = manager.record(identifier=f"{PREFIX}-tensile-machine")
+#   record.link_record(machine.id, name="tested with")
+# Each call adds a new link, so do this only once per sample.

@@ -12,35 +12,40 @@ routine data management tasks in [Kadi4Mat](https://kadi.iam.kit.edu/).
 
 ## Content
 
-1. Connecting to Kadi4Mat from the command line and from Python
-2. Creating records, uploading measurement files and adding metadata
-3. Uploading a folder of measurement files and extracting values
+1. Finding functions and commands in the kadi-apy documentation
+2. Connecting to Kadi4Mat from the command line and from Python
+3. Creating records, uploading measurement files and adding metadata
+4. Uploading a folder of measurement files and extracting values
    (e.g. yield strength) into metadata
-4. Searching records by tag, downloading the data and plotting it
+5. Searching records by tag, downloading the data and plotting it
 
 ## Agenda
 
-| Time      | Topic                                  |
-|-----------|----------------------------------------|
-| 0:00-0:10 | Introduction and demo                  |
-| 0:10-0:20 | Setup check: access token, connection  |
-| 0:20-0:35 | Exercise 1: command line interface     |
-| 0:35-0:55 | Exercise 2: first Python script        |
-| 0:55-1:00 | Break                                  |
-| 1:00-1:20 | Exercise 3: batch upload               |
-| 1:20-1:30 | Exercise 4: search, download, plot     |
-| 1:30-2:00 | Discussion                             |
+| Time      | Topic                                              |
+|-----------|----------------------------------------------------|
+| 0:00-0:10 | Introduction and demo                              |
+| 0:10-0:20 | Setup check, using the kadi-apy documentation      |
+| 0:20-0:35 | Part 2: command line interface                     |
+| 0:35-0:55 | Part 3: Python                                     |
+| 0:55-1:00 | Break                                              |
+| 1:00-1:20 | Part 4: batch upload                               |
+| 1:20-1:30 | Part 5: search, download, plot                     |
+| 1:30-2:00 | Discussion                                         |
+
+Each part starts with a complete example, followed by a reference of the
+functions used (with links to the kadi-apy documentation) and an exercise.
 
 ## Repository layout
 
 ```
 notebooks/
-  kadi_apy_workshop.ipynb  workshop notebook with all exercises (Colab)
+  kadi_apy_workshop.ipynb  workshop notebook (Colab)
 docs/
   participant-guide.pdf    participant guide (setup checklist, basics, cheat sheet)
   participant-guide.html   source of the PDF
   participant-setup.md     setup instructions (Colab or local installation)
-exercises/                 the same exercises as Python scripts, for local use
+  kadi-apy-reference.md    functions and commands used, with documentation links
+exercises/                 the same parts as scripts (example + exercise), for local use
   01_cli_basics.md
   02_first_script.py
   03_batch_upload.py
@@ -60,7 +65,8 @@ data/
 4. Run section 0 of the notebook.
 
 Details: [docs/participant-setup.md](docs/participant-setup.md) and the
-[participant guide](docs/participant-guide.pdf).
+[participant guide](docs/participant-guide.pdf). Functions and commands used in
+the workshop: [docs/kadi-apy-reference.md](docs/kadi-apy-reference.md).
 
 ## Updating the participant guide
 

@@ -1,9 +1,4 @@
-"""Exercise 4 (solution): find your records, download the data and plot it.
-
-Run from the repository root:
-
-    python exercises/solutions/04_find_and_plot.py
-"""
+"""Part 5 (solution): search, download and plot."""
 
 import sys
 from pathlib import Path
@@ -21,7 +16,7 @@ DOWNLOAD_FOLDER.mkdir(exist_ok=True)
 
 manager = KadiManager()
 
-# Search all records with our tag.
+# Part A: example, search by tag
 response = manager.search.search_resources("record", tag=[CAMPAIGN_TAG], per_page=100)
 found = response.json()["items"]
 print(f"Found {len(found)} records with tag '{CAMPAIGN_TAG}'\n")
@@ -36,7 +31,9 @@ for item in found:
         f"{extras.get('tensile_strength', '-'):>10}"
     )
 
-    # Download every CSV file of the record and plot it.
+# Part B: exercise, download and plot
+for item in found:
+    record = manager.record(id=item["id"])
     for file_info in record.get_filelist().json()["items"]:
         if not file_info["name"].endswith(".csv"):
             continue
