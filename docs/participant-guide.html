@@ -119,43 +119,45 @@
     </div></li>
     <li><div class="box"></div><div>
       <div class="title">Create a personal access token</div>
-      <div class="how">The token allows kadi-apy to access Kadi4Mat on your behalf. In Kadi4Mat:</div>
-      <ol>
-        <li>Click your name (top right), then Settings &gt; Access tokens.</li>
-        <li>Name it <code>workshop</code>, set an expiry date a few days after the workshop, and create it.</li>
-        <li>Copy the token right away, it is only shown once.</li>
-      </ol>
+      <div class="how">The token allows kadi-apy to access Kadi4Mat on your behalf. In Kadi4Mat, click your
+        name (top right), then Settings &gt; Access tokens. Name it <code>workshop</code>, set an expiry date a few
+        days after the workshop, and copy the token right away, it is only shown once.</div>
     </div></li>
     <li><div class="box"></div><div>
-      <div class="title">Check your Google account</div>
-      <div class="how">The workshop uses Google Colab, which runs Python in the web browser.
-        Open <b>colab.research.google.com</b> and sign in with a Google account.</div>
+      <div class="title">Open the workshop in GitHub Codespaces</div>
+      <div class="how">Sign in to GitHub (a free account is enough), open
+        <b>codespaces.new/msishuvo/thematic-workshop-kadiAPY</b> and click "Create codespace".
+        VS Code opens in the browser with the workshop files. The first start takes a few minutes.</div>
     </div></li>
     <li><div class="box"></div><div>
-      <div class="title">Open the workshop notebook and save a copy</div>
-      <div class="how">Open <b><span class="fill">[FILL IN short link]</span></b>, then
-        File &gt; Save a copy in Drive. Work in your copy.</div>
+      <div class="title">Install and configure kadi-apy</div>
+      <div class="how">Open a terminal (Terminal &gt; New Terminal) and run, as on your own computer:</div>
+<pre style="margin:1.5mm 0 1mm">pip install kadi-apy matplotlib
+kadi-apy config create          <span class="cmt"># creates the configuration file ~/.kadiconfig</span>
+kadi-apy config set-host        <span class="cmt"># enter https://kadi4mat.iam.kit.edu</span>
+kadi-apy config set-pat         <span class="cmt"># paste your token</span>
+kadi-apy config get-kadi-info   <span class="cmt"># checks the connection</span></pre>
+      <div class="how">The token is visible while you paste it, so do not share your screen during this step.</div>
     </div></li>
     <li><div class="box"></div><div>
-      <div class="title">Store your token as a Colab secret</div>
-      <div class="how">In the notebook, click the key icon in the left sidebar, then "Add new secret".
-        Name: <code>KADI_PAT</code>, value: your token. Switch on "Notebook access".</div>
-    </div></li>
-    <li><div class="box"></div><div>
-      <div class="title">Run the setup cells (section 0)</div>
-      <div class="how">Run the cells one after the other with <span class="kbd">Shift</span> + <span class="kbd">Enter</span>.
-        In cell 0.4, replace <code>"xy"</code> with your initials. The setup is complete when the output shows
-        "Setup complete", "Connected to ..." and "Prefix set to ...".</div>
+      <div class="title">Open the notebook and run the setup cells (section 0)</div>
+      <div class="how">Open <code>notebooks/kadi_apy_workshop.ipynb</code>. If VS Code asks to install the Python or
+        Jupyter extension, click Install. Choose the kernel: "Select Kernel" (top right) &gt; Python Environments.
+        Run the cells with <span class="kbd">Shift</span> + <span class="kbd">Enter</span> and replace <code>"xy"</code>
+        in cell 0.4 with your initials. Done when the output shows "Setup complete", "Connected to ..." and
+        "Prefix set to ...".</div>
     </div></li>
     <li><div class="box"></div><div>
       <div class="title">Prepare your screen</div>
       <div class="how">Test your microphone and the meeting chat. If possible, use two screens or place the meeting
-        and the notebook side by side. Keep Kadi4Mat open in a second browser tab.</div>
+        and VS Code side by side. Keep Kadi4Mat open in a second browser tab.</div>
     </div></li>
   </ul>
 
   <div class="callout warn"><b>Problems with the setup?</b> Please reply to the invitation e-mail with a
-    screenshot of the error before the workshop, or join the meeting 10 minutes early.</div>
+    screenshot of the error before the workshop, or join the meeting 10 minutes early. If Codespaces does not
+    work for you, Google Colab is the backup: see "Backup: Google Colab" in <code>docs/participant-setup.md</code>
+    in the repository.</div>
 
   <div class="footer"><span>Kadi-APY Workshop, 13 November 2026</span><span>1 / 4</span></div>
 </section>
@@ -211,17 +213,18 @@
   <div class="footer"><span>Kadi-APY Workshop, 13 November 2026</span><span>2 / 4</span></div>
 </section>
 
-<!-- ============ PAGE 3: COLAB + CLI USAGE ============ -->
+<!-- ============ PAGE 3: VS CODE + CLI USAGE ============ -->
 <section class="page">
-  <h2>Working in Google Colab</h2>
+  <h2>Working in VS Code</h2>
   <table>
     <tr><th style="width:36%">Task</th><th>How</th></tr>
+    <tr><td class="k">Open a terminal</td><td>Terminal &gt; New Terminal (or <span class="kbd">Ctrl</span> + <span class="kbd">`</span>).</td></tr>
     <tr><td class="k">Run a cell</td><td><span class="kbd">Shift</span> + <span class="kbd">Enter</span>, or the run button on the left of the cell.</td></tr>
     <tr><td class="k">Order</td><td>From top to bottom. Later cells use results of earlier ones.</td></tr>
     <tr><td class="k">Structure</td><td>Each part: example, reference with documentation links, exercise.</td></tr>
     <tr><td class="k">Exercises</td><td>Change only lines marked <code>TODO</code>. Solution: "Show solution".</td></tr>
-    <tr><td class="k">Lines starting with <code>!</code></td><td>Run as terminal commands, not as Python.</td></tr>
-    <tr><td class="k">Reset</td><td>Runtime &gt; Restart session, then run the cells again from the top.</td></tr>
+    <tr><td class="k">Lines starting with <code>!</code></td><td>Terminal commands in a notebook; in the terminal without <code>!</code>.</td></tr>
+    <tr><td class="k">Reset</td><td>"Restart" in the notebook toolbar, then run again from the top.</td></tr>
     <tr><td class="k">Errors</td><td>The last line of the error message usually names the problem.</td></tr>
   </table>
 
@@ -237,13 +240,10 @@
   <div class="two">
     <div>
       <h3>Where to run commands</h3>
-      <p><b>Colab:</b> in a code cell, with <code>!</code> in front:</p>
+      <p><b>Terminal</b> (VS Code, Codespaces, own computer):</p>
+<pre>kadi-apy records --help</pre>
+      <p><b>Notebook cell:</b> with <code>!</code> in front:</p>
 <pre>!kadi-apy records --help</pre>
-      <p><b>Own computer:</b> in a terminal (Windows: <i>Anaconda Prompt</i> or <i>Command Prompt</i>; macOS: <i>Terminal</i>), without <code>!</code>. One-time setup:</p>
-<pre>pip install kadi-apy
-kadi-apy config create    <span class="cmt"># new config</span>
-kadi-apy config set-host  <span class="cmt"># Kadi4Mat URL</span>
-kadi-apy config set-pat   <span class="cmt"># your token</span></pre>
       <h3>Notes</h3>
       <p style="margin:0">Values with spaces need quotes: <code>-t "Steel sample S01"</code>.<br>
         Options are case-sensitive: <code>-R</code> and <code>-r</code> are different.<br>
@@ -272,7 +272,7 @@ kadi-apy config set-pat   <span class="cmt"># your token</span></pre>
     <div class="callout" style="margin:0"><b>After the workshop</b><br>
       Documentation: kadi-apy.readthedocs.io<br>
       Material: github.com/msishuvo/thematic-workshop-kadiAPY<br>
-      For unpublished lab data, check your institute's data policy before using Colab.</div>
+      Unpublished lab data: check your data policy before using cloud services.</div>
   </div>
 
   <div class="footer"><span>Kadi-APY Workshop, 13 November 2026</span><span>3 / 4</span></div>
@@ -282,8 +282,8 @@ kadi-apy config set-pat   <span class="cmt"># your token</span></pre>
 <section class="page">
   <h2>Command reference</h2>
   <p>Full documentation: <b>kadi-apy.readthedocs.io</b>, pages Usage &gt; Library (Python) and Usage &gt; CLI.
-    In Colab: <code>help(Record.upload_file)</code> or <code>!kadi-apy records add-files --help</code>.</p>
-  <h3>Command line <span style="font-weight:400;color:var(--muted)">(in Colab, put <code>!</code> in front)</span></h3>
+    In the notebook: <code>help(Record.upload_file)</code>; in the terminal: <code>kadi-apy records add-files --help</code>.</p>
+  <h3>Command line <span style="font-weight:400;color:var(--muted)">(in the terminal; in a notebook cell, put <code>!</code> in front)</span></h3>
 <pre><span class="cmt"># create a record</span>
 kadi-apy records create -i jd-sample-s01 -t "Sample S01"
 <span class="cmt"># upload a file (or a whole folder)</span>
@@ -320,11 +320,11 @@ record.add_collection_link(collection.id)</pre>
   <table>
     <tr><th style="width:36%">Message</th><th>Cause and solution</th></tr>
     <tr><td class="k">NameError: name 'manager' is not defined</td><td>An earlier cell was not run, e.g. after a restart. Run section 0 again.</td></tr>
-    <tr><td class="k">Could not read the secret KADI_PAT</td><td>Secret name misspelled or "Notebook access" switched off.</td></tr>
-    <tr><td class="k">401 / "invalid access token"</td><td>Token incomplete or expired. Create a new token and update the secret.</td></tr>
+    <tr><td class="k">Config file does not exist</td><td>Run <code>kadi-apy config create</code>, <code>set-host</code> and <code>set-pat</code> in the terminal.</td></tr>
+    <tr><td class="k">No module named 'kadi_apy'</td><td>Wrong kernel, or kadi-apy not installed for it. Select the kernel again or run <code>%pip install kadi-apy</code> in a cell.</td></tr>
+    <tr><td class="k">401 / "invalid access token"</td><td>Token incomplete or expired. Create a new token and run <code>kadi-apy config set-pat</code> again.</td></tr>
     <tr><td class="k">identifier ... already in use</td><td>The identifier belongs to someone else. Check your prefix.</td></tr>
-    <tr><td class="k">IndentationError</td><td>Wrong number of spaces at the start of a line. Compare with the solution.</td></tr>
-    <tr><td class="k">SyntaxError</td><td>Usually a missing quote, bracket or comma. Compare with the solution.</td></tr>
+    <tr><td class="k">SyntaxError, IndentationError</td><td>Missing quote, bracket or comma, or wrong indentation. Compare with the solution.</td></tr>
   </table>
 
   <div class="footer"><span>Kadi-APY Workshop, 13 November 2026</span><span>4 / 4</span></div>

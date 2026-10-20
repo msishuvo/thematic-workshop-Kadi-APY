@@ -4,11 +4,13 @@ Hands-on workshop on using [Kadi-APY](https://gitlab.com/iam-cms/kadi-apy)
 ([documentation](https://kadi-apy.readthedocs.io/en/stable/)) to automate
 routine data management tasks in [Kadi4Mat](https://kadi.iam.kit.edu/).
 
+[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/msishuvo/thematic-workshop-kadiAPY)
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/msishuvo/thematic-workshop-kadiAPY/blob/main/notebooks/kadi_apy_workshop.ipynb)
 
 - **Date:** Friday, 13 November 2026, 14:00-16:00 (CET)
 - **Format:** online, 90 min hands-on and 30 min discussion
-- **Environment:** Google Colab, Kadi4Mat at <https://kadi4mat.iam.kit.edu>
+- **Environment:** VS Code in GitHub Codespaces (backup: Google Colab), Kadi4Mat at
+  <https://kadi4mat.iam.kit.edu>
 
 ## Content
 
@@ -41,13 +43,13 @@ functions used (with links to the kadi-apy documentation) and an exercise.
 
 ```
 notebooks/
-  kadi_apy_workshop.ipynb  workshop notebook (Colab)
+  kadi_apy_workshop.ipynb  workshop notebook (VS Code / Codespaces or Colab)
 docs/
   agenda.pdf               one-page agenda
   agenda.html              source of the agenda PDF
   participant-guide.pdf    participant guide (setup checklist, basics, cheat sheet)
   participant-guide.html   source of the PDF
-  participant-setup.md     setup instructions (Colab or local installation)
+  participant-setup.md     setup instructions (Codespaces, own computer, Colab)
   kadi-apy-reference.md    functions and commands used, with documentation links
 exercises/                 the same parts as scripts (example + exercise), for local use
   01_cli_basics.md
@@ -63,10 +65,20 @@ data/
 ## Setup for participants
 
 1. Create a personal access token in Kadi4Mat (Settings > Access tokens).
-2. Open the notebook with the "Open in Colab" button above and save a copy
-   (File > Save a copy in Drive).
-3. Store the token as a Colab secret named `KADI_PAT` (key icon in the sidebar).
-4. Run section 0 of the notebook.
+2. Open the repository in GitHub Codespaces with the button above.
+3. In the VS Code terminal, install and configure kadi-apy, as you would on
+   your own computer:
+   ```bash
+   pip install kadi-apy matplotlib
+   kadi-apy config create
+   kadi-apy config set-host        # https://kadi4mat.iam.kit.edu
+   kadi-apy config set-pat         # your token
+   kadi-apy config get-kadi-info   # connection check
+   ```
+4. Open `notebooks/kadi_apy_workshop.ipynb`, select the Python kernel and run section 0.
+
+Backup: open the notebook in Google Colab with the button above and store the
+token as a Colab secret named `KADI_PAT`.
 
 Details: [docs/participant-setup.md](docs/participant-setup.md) and the
 [participant guide](docs/participant-guide.pdf). Functions and commands used in
