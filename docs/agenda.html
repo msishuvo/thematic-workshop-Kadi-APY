@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Kadi-APY Workshop: Agenda</title>
+<!--
+  Edit the [FILL IN] field, then regenerate the PDF:
+    chromium --headless --no-pdf-header-footer \
+      --print-to-pdf=agenda.pdf agenda.html
+-->
+<style>
+  @page { size: A4; margin: 13mm 17mm 12mm; }
+  :root {
+    --ink: #1c2530;
+    --muted: #5b6672;
+    --accent: #0f766e;
+    --accent-soft: #e6f2f1;
+    --line: #d8dee4;
+    --code-bg: #f3f5f7;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; background: #fff; color: var(--ink); }
+  body { font-family: "Inter", "Liberation Sans", Arial, sans-serif; font-size: 9pt; line-height: 1.4; }
+  h1 { font-size: 20pt; line-height: 1.15; margin: 0 0 1.5mm; letter-spacing: -0.01em; }
+  h2 { font-size: 12pt; margin: 4.5mm 0 2mm; color: var(--accent); }
+  p { margin: 0 0 2mm; }
+  a { color: var(--accent); text-decoration: none; }
+  .lead { color: var(--muted); font-size: 10.5pt; margin-bottom: 4mm; }
+  .fill { background: #fff3c4; padding: 0 1.2mm; border-radius: 1mm; font-weight: 600; }
+  code, .mono { font-family: "DejaVu Sans Mono", "Liberation Mono", monospace; font-size: 8pt; }
+  code { background: var(--code-bg); padding: .2mm 1mm; border-radius: 1mm; }
+
+  .info-row { display: grid; grid-template-columns: 1.3fr 1fr 1.2fr; gap: 3mm; margin: 3mm 0 1mm; }
+  .info { border: 1px solid var(--line); border-radius: 2mm; padding: 2.2mm 3mm; }
+  .info .label { font-size: 7.5pt; color: var(--muted); text-transform: uppercase; letter-spacing: .05em; }
+  .info .value { font-weight: 600; margin-top: .5mm; }
+
+  ul, ol { margin: 0 0 2mm; padding-left: 5mm; }
+  li { margin-bottom: 1mm; }
+
+  table { width: 100%; border-collapse: collapse; }
+  th, td { text-align: left; padding: 1.7mm 2.2mm; border-bottom: 1px solid var(--line); vertical-align: top; }
+  th { font-size: 7.8pt; text-transform: uppercase; letter-spacing: .04em; color: var(--muted); font-weight: 600; }
+  tr { break-inside: avoid; }
+  td.time { white-space: nowrap; font-weight: 600; width: 22mm; }
+  td.block { width: 40mm; font-weight: 600; }
+  .result { color: var(--accent); margin-top: 1mm; }
+  .result b { font-weight: 600; }
+  tr.break td { color: var(--muted); background: #fafbfc; }
+  tr.discussion td { background: var(--accent-soft); }
+
+  .callout { border-left: 3px solid var(--accent); background: var(--accent-soft); padding: 2.5mm 3.5mm; border-radius: 0 1.5mm 1.5mm 0; margin: 3mm 0; }
+  .two { display: grid; grid-template-columns: 1fr 1fr; gap: 6mm; }
+  .url { font-family: "DejaVu Sans Mono", "Liberation Mono", monospace; font-size: 7.6pt; word-break: break-all; }
+</style>
+</head>
+<body>
+
+<h1>Kadi-APY Workshop</h1>
+<p class="lead">Automating everyday data management tasks in Kadi4Mat with Python and the command line</p>
+
+<div class="info-row">
+  <div class="info"><div class="label">Date and time</div><div class="value">Friday, 13 November 2026<br>14:00-16:00 (CET)</div></div>
+  <div class="info"><div class="label">Format</div><div class="value">Online, hands-on<br>in Google Colab</div></div>
+  <div class="info"><div class="label">Meeting link</div><div class="value"><span class="fill">[FILL IN]</span></div></div>
+</div>
+
+<h2>About the workshop</h2>
+<p>Kadi4Mat is a research data infrastructure for storing and organizing research data together
+  with structured metadata. kadi-apy is its Python library and command line tool. It allows
+  routine steps of the web interface, such as creating records, uploading files, adding metadata
+  and searching, to be scripted. This is useful whenever the same steps are repeated for many files,
+  for example after a measurement series.</p>
+<p>In this workshop we work through such a task step by step. The example is a tensile test
+  campaign with three steel specimens (synthetic data). The result files of the testing machine
+  are uploaded to Kadi4Mat, characteristic values such as the yield strength are calculated and stored
+  as metadata, and the data is searched, downloaded and plotted again. The same steps apply to
+  other instruments and file types. No prior experience with kadi-apy or Python is required.</p>
+
+<h2>What participants will be able to do afterwards</h2>
+<ul>
+  <li>Find functions and commands in the kadi-apy documentation.</li>
+  <li>Connect to Kadi4Mat from Python and from the command line with a personal access token.</li>
+  <li>Create records, upload files, and add metadata (with units) and tags.</li>
+  <li>Group records in collections and link related records, e.g. specimen and testing machine.</li>
+  <li>Upload a folder of measurement files in one run, including values calculated from the files.</li>
+  <li>Search records by tag, download their files and plot the data.</li>
+</ul>
+
+<h2>Schedule</h2>
+<p>The hands-on work consists of five parts with the same structure: a complete <b>example</b> that is
+  demonstrated and run together, a <b>reference</b> of the functions used with links to the kadi-apy
+  documentation, and an <b>exercise</b> on a similar task. Solutions are included in the notebook.</p>
+
+<table>
+  <tr><th>Time</th><th>Block</th><th>What happens</th></tr>
+  <tr>
+    <td class="time">14:00-14:10</td>
+    <td class="block">Welcome and demonstration</td>
+    <td>Short introduction to the workshop and to the Kadi4Mat terms used: record, metadata, collection,
+      tag and identifier. Live demonstration of the final result: a script creates records for three
+      specimens from a folder of result files, and the records are then shown in the Kadi4Mat web interface.
+      <div class="result"><b>Result:</b> an overview of what we build during the workshop.</div></td>
+  </tr>
+  <tr>
+    <td class="time">14:10-14:20</td>
+    <td class="block">Setup check and Part 1: kadi-apy documentation</td>
+    <td>Participants run the setup cells of the notebook (connection to Kadi4Mat, personal prefix) to check
+      that everything works. Introduction to the documentation: the Library and CLI pages, how to read
+      a function entry (required and optional parameters, return values), and how to get the same
+      information inside Python (<code>help()</code>) and on the command line (<code>--help</code>).
+      <div class="result"><b>Result:</b> a working connection and a way to look up any function.</div></td>
+  </tr>
+  <tr>
+    <td class="time">14:20-14:35</td>
+    <td class="block">Part 2: Command line interface</td>
+    <td><i>Example:</i> create a record for specimen S01, upload its measurement file, add metadata with
+      units (material, specimen length, test temperature) and a tag, and show the record.<br>
+      <i>Exercise:</i> create a record for the tensile testing machine with its own metadata.
+      <div class="result"><b>Result:</b> two records in Kadi4Mat, created without the web interface.</div></td>
+  </tr>
+  <tr>
+    <td class="time">14:35-14:55</td>
+    <td class="block">Part 3: Python</td>
+    <td><i>Example:</i> the same steps in Python for specimen S02: connect, get or create a record, add a
+      list of metadata entries, upload a file, add a tag and read a value back.<br>
+      <i>Exercise:</i> repeat the steps for specimen S03.
+      <div class="result"><b>Result:</b> a first working Python script that fills a record.</div></td>
+  </tr>
+  <tr class="break">
+    <td class="time">14:55-15:00</td>
+    <td class="block">Break</td>
+    <td>Time to catch up with the exercises.</td>
+  </tr>
+  <tr>
+    <td class="time">15:00-15:20</td>
+    <td class="block">Part 4: Batch upload of a test campaign</td>
+    <td><i>Example:</i> add a record to a collection and link two records (specimen and testing machine),
+      including the difference between numeric IDs and identifiers. A loop that reads and evaluates
+      every result file of a folder.<br>
+      <i>Exercise:</i> complete the loop so that for every file a record is created, the calculated values are
+      stored as metadata, the file is uploaded, and the record is tagged, added to the collection and
+      linked to the machine.
+      <div class="result"><b>Result:</b> the complete test campaign in Kadi4Mat, uploaded with one script.</div></td>
+  </tr>
+  <tr>
+    <td class="time">15:20-15:30</td>
+    <td class="block">Part 5: Search, download and plot</td>
+    <td><i>Example:</i> search the records by tag and print a table of their metadata.<br>
+      <i>Exercise:</i> download the files of the found records and plot all stress-strain curves in one figure.
+      <div class="result"><b>Result:</b> the data is available again for analysis.</div></td>
+  </tr>
+  <tr class="discussion">
+    <td class="time">15:30-16:00</td>
+    <td class="block">Discussion</td>
+    <td>
+      <b>1. Own use cases (about 5 min):</b> everyone notes one repetitive data task from their own work,
+      with instrument, file type and number of files.<br>
+      <b>2. Collecting and grouping (about 10 min):</b> the tasks are collected in the chat and grouped.
+      For the most common ones we sketch on screen which kadi-apy functions would be used.<br>
+      <b>3. Open questions (about 10 min):</b> for example data protection when using Colab, running kadi-apy
+      on a lab computer, importing existing data, and metadata templates.<br>
+      <b>4. Wrap-up (about 5 min):</b> next steps, links to the material and follow-up.
+      <div class="result"><b>Result:</b> a list of concrete tasks that participants can automate next.</div></td>
+  </tr>
+</table>
+
+<h2>Before the workshop</h2>
+<p>Please complete these steps in advance (about 20 minutes). A step-by-step checklist is in the participant guide.</p>
+<ol>
+  <li>Log in to Kadi4Mat at <a href="https://kadi4mat.iam.kit.edu">kadi4mat.iam.kit.edu</a> and create a personal
+    access token (Settings &gt; Access tokens).</li>
+  <li>Open the workshop notebook in Google Colab (any Google account) and save a copy to your Drive.</li>
+  <li>Store the token as a Colab secret named <code>KADI_PAT</code> and run the setup cells (section 0).</li>
+</ol>
+<p>If something does not work, please reply to the invitation e-mail with a screenshot of the error, or join the
+  meeting 10 minutes early.</p>
+
+<h2>Material</h2>
+<table>
+  <tr><td style="width:36mm;font-weight:600">Workshop notebook</td>
+    <td><a class="url" href="https://colab.research.google.com/github/msishuvo/thematic-workshop-kadiAPY/blob/main/notebooks/kadi_apy_workshop.ipynb">colab.research.google.com/github/msishuvo/thematic-workshop-kadiAPY/blob/main/notebooks/kadi_apy_workshop.ipynb</a></td></tr>
+  <tr><td style="font-weight:600">Repository</td>
+    <td><a class="url" href="https://github.com/msishuvo/thematic-workshop-kadiAPY">github.com/msishuvo/thematic-workshop-kadiAPY</a>
+      (participant guide, reference of the functions and commands used, example scripts, example data)</td></tr>
+  <tr><td style="font-weight:600">kadi-apy documentation</td>
+    <td><a class="url" href="https://kadi-apy.readthedocs.io/en/stable/">kadi-apy.readthedocs.io/en/stable</a></td></tr>
+</table>
+
+</body>
+</html>

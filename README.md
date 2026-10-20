@@ -21,16 +21,18 @@ routine data management tasks in [Kadi4Mat](https://kadi.iam.kit.edu/).
 
 ## Agenda
 
-| Time      | Topic                                              |
-|-----------|----------------------------------------------------|
-| 0:00-0:10 | Introduction and demo                              |
-| 0:10-0:20 | Setup check, using the kadi-apy documentation      |
-| 0:20-0:35 | Part 2: command line interface                     |
-| 0:35-0:55 | Part 3: Python                                     |
-| 0:55-1:00 | Break                                              |
-| 1:00-1:20 | Part 4: batch upload                               |
-| 1:20-1:30 | Part 5: search, download, plot                     |
-| 1:30-2:00 | Discussion                                         |
+Detailed agenda with the content of each block: [docs/agenda.pdf](docs/agenda.pdf)
+
+| Time        | Topic                                                |
+|-------------|------------------------------------------------------|
+| 14:00-14:10 | Welcome and demonstration                            |
+| 14:10-14:20 | Setup check, Part 1: kadi-apy documentation          |
+| 14:20-14:35 | Part 2: command line interface                       |
+| 14:35-14:55 | Part 3: Python                                       |
+| 14:55-15:00 | Break                                                |
+| 15:00-15:20 | Part 4: batch upload of a test campaign              |
+| 15:20-15:30 | Part 5: search, download and plot                    |
+| 15:30-16:00 | Discussion                                           |
 
 Each part starts with a complete example, followed by a reference of the
 functions used (with links to the kadi-apy documentation) and an exercise.
@@ -41,6 +43,8 @@ functions used (with links to the kadi-apy documentation) and an exercise.
 notebooks/
   kadi_apy_workshop.ipynb  workshop notebook (Colab)
 docs/
+  agenda.pdf               detailed agenda (content of each block)
+  agenda.html              source of the agenda PDF
   participant-guide.pdf    participant guide (setup checklist, basics, cheat sheet)
   participant-guide.html   source of the PDF
   participant-setup.md     setup instructions (Colab or local installation)
