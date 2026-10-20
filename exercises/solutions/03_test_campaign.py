@@ -1,4 +1,4 @@
-"""Part 4 (solution): batch upload of a tensile test campaign."""
+"""Part 4 (solution): automating a tensile test campaign."""
 
 import sys
 from pathlib import Path

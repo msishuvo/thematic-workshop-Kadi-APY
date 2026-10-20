@@ -1,4 +1,4 @@
-"""Part 4: batch upload of a tensile test campaign (20 min).
+"""Part 4: automating a tensile test campaign (20 min).
 
 The testing machine has written one result file per specimen into a folder.
 Instead of uploading the files one by one and copying values into the
@@ -17,9 +17,9 @@ identifiers can be used directly:
 
 Run from the repository root:
 
-    python exercises/03_batch_upload.py
+    python exercises/03_test_campaign.py
 
-Solution: exercises/solutions/03_batch_upload.py
+Solution: exercises/solutions/03_test_campaign.py
 
 Reference (https://kadi-apy.readthedocs.io/en/stable/usage/lib.html):
     KadiManager.collection      get or create a collection, parameters: see "Collection"
