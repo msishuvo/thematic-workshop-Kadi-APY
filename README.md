@@ -26,7 +26,7 @@ One-page agenda for invitations: [docs/agenda.pdf](docs/agenda.pdf)
 | Time | Topic | Content and use case |
 |---|---|---|
 | 14:00-14:10 | Welcome and demonstration | Kadi4Mat terms and a live demo: three specimens uploaded with one script |
-| 14:10-14:20 | Part 1: Kadi setup check, kadi-apy documentation | Connection test; finding and reading functions in the documentation |
+| 14:10-14:20 | Part 1: Kadi setup check, kadi-apy documentation | Kadi4Mat access; finding and reading functions in the Kadi-Apy documentation |
 | 14:20-14:35 | Part 2: command line | Record, file, metadata and tags with single commands; for quick one-off steps |
 | 14:35-14:55 | Part 3: Python | The same steps as a script; the basis for processing many files |
 | 14:55-15:00 | Break |  |
