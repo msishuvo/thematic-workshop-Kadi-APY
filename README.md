@@ -4,8 +4,8 @@ Hands-on workshop on using [Kadi-APY](https://gitlab.com/iam-cms/kadi-apy)
 ([documentation](https://kadi-apy.readthedocs.io/en/stable/)) to automate
 routine data management tasks in [Kadi4Mat](https://kadi.iam.kit.edu/).
 
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/msishuvo/thematic-workshop-kadiAPY)
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/msishuvo/thematic-workshop-kadiAPY/blob/main/notebooks/kadi_apy_workshop.ipynb)
+[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/msishuvo/thematic-workshop-Kadi-APY)
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/msishuvo/thematic-workshop-Kadi-APY/blob/main/notebooks/kadi_apy_workshop.ipynb)
 
 - **Date:** Friday, 13 November 2026, 14:00-16:00 (CET)
 - **Format:** online, 90 min hands-on and 30 min discussion
@@ -14,7 +14,7 @@ routine data management tasks in [Kadi4Mat](https://kadi.iam.kit.edu/).
 
 ## Content
 
-1. Finding functions and commands in the kadi-apy documentation
+1. Finding functions and commands in the Kadi-APY documentation
 2. Connecting to Kadi4Mat from the command line and from Python
 3. Creating records, uploading measurement files and adding metadata
 4. Processing a folder of result files with one script: records, calculated values
@@ -28,7 +28,7 @@ One-page agenda for invitations: [docs/agenda.pdf](docs/agenda.pdf)
 | Time | Topic | Content and use case |
 |---|---|---|
 | 14:00-14:10 | Welcome and demonstration | Kadi4Mat terms and a live demo: three specimens uploaded with one script |
-| 14:10-14:20 | Part 1: Kadi setup check, kadi-apy documentation | Kadi4Mat access; finding and reading functions in the Kadi-Apy documentation |
+| 14:10-14:20 | Part 1: Kadi setup check, Kadi-APY documentation | Kadi4Mat access; finding and reading functions in the Kadi-APY documentation |
 | 14:20-14:35 | Part 2: command line | Record, file, metadata and tags with single commands; for quick one-off steps |
 | 14:35-14:55 | Part 3: Python | The same steps as a script; the basis for processing many files |
 | 14:55-15:00 | Break |  |
@@ -37,7 +37,7 @@ One-page agenda for invitations: [docs/agenda.pdf](docs/agenda.pdf)
 | 15:30-16:00 | Discussion | Your own use cases, which functions would automate them, open questions |
 
 Each part starts with a complete example, followed by a reference of the
-functions used (with links to the kadi-apy documentation) and an exercise.
+functions used (with links to the Kadi-APY documentation) and an exercise.
 
 ## Repository layout
 
@@ -66,7 +66,7 @@ data/
 
 1. Create a personal access token in Kadi4Mat (Settings > Access tokens).
 2. Open the repository in GitHub Codespaces with the button above.
-3. In the VS Code terminal, install and configure kadi-apy, as you would on
+3. In the VS Code terminal, install and configure Kadi-APY, as you would on
    your own computer:
    ```bash
    pip install kadi-apy matplotlib

@@ -26,7 +26,7 @@ The token allows kadi-apy to access Kadi4Mat on your behalf.
 ## 3. Open the workshop in GitHub Codespaces
 
 1. Sign in to GitHub (a free account is enough).
-2. Open <https://codespaces.new/msishuvo/thematic-workshop-kadiAPY> and click
+2. Open <https://codespaces.new/msishuvo/thematic-workshop-Kadi-APY> and click
    "Create codespace". VS Code opens in the browser with the workshop files.
    The first start takes a few minutes.
 
@@ -72,7 +72,7 @@ Code and continue with steps 4 and 5.
 
 If Codespaces does not work for you:
 
-1. Open the [workshop notebook in Colab](https://colab.research.google.com/github/msishuvo/thematic-workshop-kadiAPY/blob/main/notebooks/kadi_apy_workshop.ipynb)
+1. Open the [workshop notebook in Colab](https://colab.research.google.com/github/msishuvo/thematic-workshop-Kadi-APY/blob/main/notebooks/kadi_apy_workshop.ipynb)
    and sign in with a Google account.
 2. Save a copy (File > Save a copy in Drive) and work in your copy.
 3. Click the key icon (Secrets) in the left sidebar, add a secret with the
