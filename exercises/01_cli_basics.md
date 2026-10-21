@@ -36,7 +36,7 @@ kadi-apy records add-metadatum -R xy-sample-s01 -m test_temperature -v 23 -t flo
 Add a tag and show the result (`-m` metadata, `-l` file list):
 
 ```bash
-kadi-apy records add-tag -R xy-sample-s01 -t xy-tensile-campaign
+kadi-apy records add-tag -R xy-sample-s01 -t xy-tensile-tests
 kadi-apy records show-info -R xy-sample-s01 -m -l
 ```
 

@@ -23,7 +23,7 @@ from kadi_apy import KadiManager
 
 # TODO: set your prefix (your initials, lowercase).
 PREFIX = "xy"
-CAMPAIGN_TAG = f"{PREFIX}-tensile-campaign"
+TAG = f"{PREFIX}-tensile-tests"
 
 # The connection to Kadi4Mat. It reads the host and token from the config
 # file (kadi-apy config create / set-host / set-pat), so no token appears here.
@@ -56,7 +56,7 @@ record.add_metadata(metadata, force=True)
 response = record.upload_file("data/tensile_tests/S02_tensile.csv", force=True)
 print("Upload successful:", response.ok)
 
-record.add_tag(CAMPAIGN_TAG)
+record.add_tag(TAG)
 
 # Read a value back from Kadi4Mat.
 print(record.get_metadatum("specimen_length"))
@@ -73,4 +73,4 @@ print(record.get_metadatum("specimen_length"))
 
 # TODO 3: upload the file data/tensile_tests/S03_tensile.csv
 
-# TODO 4: add the tag CAMPAIGN_TAG
+# TODO 4: add the tag (variable TAG)

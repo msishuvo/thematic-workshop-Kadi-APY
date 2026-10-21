@@ -17,9 +17,9 @@ routine data management tasks in [Kadi4Mat](https://kadi.iam.kit.edu/).
 1. Finding functions and commands in the kadi-apy documentation
 2. Connecting to Kadi4Mat from the command line and from Python
 3. Creating records, uploading measurement files and adding metadata
-4. Handling a whole test campaign with one script: records, calculated values
+4. Processing a folder of result files with one script: records, calculated values
    (e.g. yield strength) as metadata, files, collections and record links
-5. Searching records by tag, downloading the data and plotting it
+5. Searching records by tag, plotting their metadata, downloading the data and plotting it
 
 ## Agenda
 
@@ -32,8 +32,8 @@ One-page agenda for invitations: [docs/agenda.pdf](docs/agenda.pdf)
 | 14:20-14:35 | Part 2: command line | Record, file, metadata and tags with single commands; for quick one-off steps |
 | 14:35-14:55 | Part 3: Python | The same steps as a script; the basis for processing many files |
 | 14:55-15:00 | Break |  |
-| 15:00-15:20 | Part 4: automating a test campaign | One script for a folder of result files: records with calculated values as metadata, files, grouped in a collection, and links to related records |
-| 15:20-15:30 | Part 5: search, download, plot | Find records by tag, download them and plot the stress-strain curves |
+| 15:00-15:20 | Part 4: automation | One script for a folder of result files: records with calculated values as metadata, files, grouped in a collection, and links to related records |
+| 15:20-15:30 | Part 5: search, download, plot | Find records by tag, plot their metadata, download the result files and plot the measured data |
 | 15:30-16:00 | Discussion | Your own use cases, which functions would automate them, open questions |
 
 Each part starts with a complete example, followed by a reference of the
@@ -54,7 +54,7 @@ docs/
 exercises/                 the same parts as scripts (example + exercise), for local use
   01_cli_basics.md
   02_first_script.py
-  03_test_campaign.py
+  03_automation.py
   04_find_and_plot.py
   tensile.py               reading and evaluating the tensile test files
   solutions/

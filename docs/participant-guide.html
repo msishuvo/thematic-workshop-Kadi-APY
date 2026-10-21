@@ -169,7 +169,7 @@ kadi-apy config get-kadi-info   <span class="cmt"># checks the connection</span>
 
   <div class="diagram">
     <div class="coll">
-      <div class="coll-title">Collection: "Tensile test campaign 2026" &nbsp;<span style="font-weight:400;color:var(--muted)">a project, campaign or batch</span></div>
+      <div class="coll-title">Collection: "Tensile tests 2026" &nbsp;<span style="font-weight:400;color:var(--muted)">a project, test series or batch</span></div>
       <div class="records">
         <div class="rec">
           <div class="rec-title">Record: Steel sample S01</div>
@@ -180,7 +180,7 @@ kadi-apy config get-kadi-info   <span class="cmt"># checks the connection</span>
             <tr><td class="mono" style="padding:.6mm 1mm">yield_strength</td><td style="padding:.6mm 1mm">364.1</td><td style="padding:.6mm 1mm">MPa</td></tr>
             <tr><td class="mono" style="padding:.6mm 1mm;border:0">test_temperature</td><td style="padding:.6mm 1mm;border:0">23</td><td style="padding:.6mm 1mm;border:0">degC</td></tr>
           </table>
-          <div class="part"><b>Tags</b> &nbsp;<span class="chip">xy-tensile-campaign</span></div>
+          <div class="part"><b>Tags</b> &nbsp;<span class="chip">xy-tensile-tests</span></div>
           <div class="part"><b>Links</b> &nbsp; "tested with": Tensile machine</div>
         </div>
         <div class="rec faded"><div class="rec-title">Record: Sample S02</div><div class="part">files, metadata, tags ...</div></div>
@@ -193,7 +193,7 @@ kadi-apy config get-kadi-info   <span class="cmt"># checks the connection</span>
     <tr><th style="width:24%">Term</th><th>Meaning</th></tr>
     <tr><td class="k">Record</td><td>One documented object, e.g. a sample, a measurement or a simulation run. Contains files and metadata.</td></tr>
     <tr><td class="k">Metadata</td><td>Structured information about a record: key (name), type (text, number, ...), value and unit. Metadata can be searched.</td></tr>
-    <tr><td class="k">Collection</td><td>A group of records, e.g. a project or a test campaign.</td></tr>
+    <tr><td class="k">Collection</td><td>A group of records, e.g. a project or a test series.</td></tr>
     <tr><td class="k">Tag</td><td>A keyword for finding records.</td></tr>
     <tr><td class="k">Identifier</td><td>A short name for a record, e.g. <code>jd-sample-s01</code>. It must be unique in Kadi4Mat, so in the workshop it starts with your initials.</td></tr>
   </table>
@@ -291,11 +291,11 @@ kadi-apy records add-files -R jd-sample-s01 -n data/tensile_tests/S01_tensile.cs
 <span class="cmt"># add metadata with type and unit</span>
 kadi-apy records add-metadatum -R jd-sample-s01 -m specimen_length -v 80 -t float -u mm
 <span class="cmt"># add a tag</span>
-kadi-apy records add-tag -R jd-sample-s01 -t jd-tensile-campaign
+kadi-apy records add-tag -R jd-sample-s01 -t jd-tensile-tests
 <span class="cmt"># show metadata (-m) and file list (-l)</span>
 kadi-apy records show-info -R jd-sample-s01 -m -l
 <span class="cmt"># find records by tag / list all commands</span>
-kadi-apy records get-records -t jd-tensile-campaign
+kadi-apy records get-records -t jd-tensile-tests
 kadi-apy records --help</pre>
 
   <h3>Python</h3>
@@ -310,10 +310,10 @@ record.add_metadata([{"key": "specimen_length", "type": "float",
                       "value": 80.0, "unit": "mm"}], force=True)
 
 record.upload_file("data/tensile_tests/S01_tensile.csv", force=True)   <span class="cmt"># upload a file</span>
-record.add_tag("jd-tensile-campaign")                    <span class="cmt"># add a tag</span>
+record.add_tag("jd-tensile-tests")                    <span class="cmt"># add a tag</span>
 
 <span class="cmt"># put the record into a collection</span>
-collection = manager.collection(identifier="jd-campaign", title="Campaign", create=True)
+collection = manager.collection(identifier="jd-tensile-tests-2026", title="Tensile tests 2026", create=True)
 record.add_collection_link(collection.id)</pre>
 
   <h2 style="margin-top:2mm">Common errors</h2>

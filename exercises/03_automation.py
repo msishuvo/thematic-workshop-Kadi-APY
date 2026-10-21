@@ -1,4 +1,4 @@
-"""Part 4: automating a tensile test campaign (20 min).
+"""Part 4: automation (20 min).
 
 The testing machine has written one result file per specimen into a folder.
 Instead of uploading the files one by one and copying values into the
@@ -12,14 +12,14 @@ add_collection_link and link_record expect numeric IDs. If you only know the
 identifier, get the record or collection with manager.record(identifier=...)
 or manager.collection(identifier=...) and use its .id. On the command line,
 identifiers can be used directly:
-    kadi-apy records add-collection-link -R xy-sample-s01 -C xy-tensile-campaign-2026
+    kadi-apy records add-collection-link -R xy-sample-s01 -C xy-tensile-tests-2026
     kadi-apy records add-record-link -R xy-sample-s01 -L xy-tensile-machine -n "tested with"
 
 Run from the repository root:
 
-    python exercises/03_test_campaign.py
+    python exercises/03_automation.py
 
-Solution: exercises/solutions/03_test_campaign.py
+Solution: exercises/solutions/03_automation.py
 
 Reference (https://kadi-apy.readthedocs.io/en/stable/usage/lib.html):
     KadiManager.collection      get or create a collection, parameters: see "Collection"
@@ -38,7 +38,7 @@ from tensile import evaluate  # in exercises/tensile.py
 # TODO: set your prefix.
 PREFIX = "xy"
 DATA_FOLDER = Path("data/tensile_tests")
-CAMPAIGN_TAG = f"{PREFIX}-tensile-campaign"
+TAG = f"{PREFIX}-tensile-tests"
 
 UNITS = {
     "youngs_modulus": "GPa",
@@ -55,10 +55,10 @@ manager = KadiManager()
 # Part A: example
 # ---------------------------------------------------------------------------
 
-# Collection for the whole campaign (created if it does not exist yet).
+# Collection for all tensile tests (created if it does not exist yet).
 collection = manager.collection(
-    identifier=f"{PREFIX}-tensile-campaign-2026",
-    title="Tensile test campaign 2026",
+    identifier=f"{PREFIX}-tensile-tests-2026",
+    title="Tensile tests 2026",
     create=True,
 )
 
@@ -106,7 +106,7 @@ for csv_file in sorted(DATA_FOLDER.glob("*.csv")):
 
     # TODO 2: upload the CSV file (upload_file expects a string: str(csv_file))
 
-    # TODO 3: add the tag CAMPAIGN_TAG
+    # TODO 3: add the tag (variable TAG)
 
     # TODO 4: add the record to the collection (collection from part A)
 

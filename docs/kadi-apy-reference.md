@@ -67,7 +67,7 @@ Base URL of the links: <https://kadi-apy.readthedocs.io/en/stable/usage/lib.html
 | [`record.add_metadata(metadata, force=False)`](https://kadi-apy.readthedocs.io/en/stable/usage/lib.html#kadi_apy.lib.resources.records.Record.add_metadata) | Add a list of metadata entries | 3, 4 |
 | [`record.upload_file(file_path, force=False)`](https://kadi-apy.readthedocs.io/en/stable/usage/lib.html#kadi_apy.lib.resources.records.Record.upload_file) | Upload a file | 3, 4 |
 | [`record.add_tag(tag)`](https://kadi-apy.readthedocs.io/en/stable/usage/lib.html#kadi_apy.lib.resources.records.Record.add_tag) | Add a tag | 3, 4 |
-| [`record.get_metadatum(name)`](https://kadi-apy.readthedocs.io/en/stable/usage/lib.html#kadi_apy.lib.resources.records.Record.get_metadatum) | Read one metadata entry | 3 |
+| [`record.get_metadatum(name)`](https://kadi-apy.readthedocs.io/en/stable/usage/lib.html#kadi_apy.lib.resources.records.Record.get_metadatum) | Read one metadata entry | 3, 5 |
 | [`manager.collection(...)`](https://kadi-apy.readthedocs.io/en/stable/usage/lib.html#kadi_apy.lib.core.KadiManager.collection) | Get or create a collection; parameters: see [`Collection`](https://kadi-apy.readthedocs.io/en/stable/usage/lib.html#kadi_apy.lib.resources.collections.Collection) | 4 |
 | [`record.add_collection_link(collection_id)`](https://kadi-apy.readthedocs.io/en/stable/usage/lib.html#kadi_apy.lib.resources.records.Record.add_collection_link) | Add the record to a collection (collection ID) | 4 |
 | [`record.link_record(record_to, name)`](https://kadi-apy.readthedocs.io/en/stable/usage/lib.html#kadi_apy.lib.resources.records.Record.link_record) | Link two records (ID of the target record, name of the link) | 4 |
@@ -80,7 +80,7 @@ and `link_record`, expect the numeric ID. If you only know the identifier, get t
 resource first and use its `.id`:
 
 ```python
-collection = manager.collection(identifier="jd-tensile-campaign-2026")
+collection = manager.collection(identifier="jd-tensile-tests-2026")
 machine = manager.record(identifier="jd-tensile-machine")
 record.add_collection_link(collection.id)
 record.link_record(machine.id, name="tested with")
@@ -149,7 +149,7 @@ All record commands select the record with `-R` (identifier) or `-r` (numeric ID
 | [`kadi-apy collections add-record-link`](https://kadi-apy.readthedocs.io/en/stable/usage/cli.html#kadi-apy-collections-add-record-link) | Add a record to a collection, starting from the collection |
 
 ```bash
-kadi-apy records add-collection-link -R jd-sample-s01 -C jd-tensile-campaign-2026
+kadi-apy records add-collection-link -R jd-sample-s01 -C jd-tensile-tests-2026
 kadi-apy records add-record-link -R jd-sample-s01 -L jd-tensile-machine -n "tested with"
 ```
 

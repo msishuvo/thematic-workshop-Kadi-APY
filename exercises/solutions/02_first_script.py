@@ -3,7 +3,7 @@
 from kadi_apy import KadiManager
 
 PREFIX = "xy"
-CAMPAIGN_TAG = f"{PREFIX}-tensile-campaign"
+TAG = f"{PREFIX}-tensile-tests"
 
 manager = KadiManager()
 
@@ -23,7 +23,7 @@ print("Record:", record)
 record.add_metadata(METADATA, force=True)
 response = record.upload_file("data/tensile_tests/S02_tensile.csv", force=True)
 print("Upload successful:", response.ok)
-record.add_tag(CAMPAIGN_TAG)
+record.add_tag(TAG)
 print(record.get_metadatum("specimen_length"))
 
 # Part B: exercise, record for sample S03
@@ -34,5 +34,5 @@ record = manager.record(
 )
 record.add_metadata(METADATA, force=True)
 record.upload_file("data/tensile_tests/S03_tensile.csv", force=True)
-record.add_tag(CAMPAIGN_TAG)
+record.add_tag(TAG)
 print("Done. Check the record in Kadi4Mat:", record)
